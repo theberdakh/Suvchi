@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_action_dashboard"
+        android:icon="@drawable/outline_space_dashboard_24"
+        android:title="Dashboard"/>
+    <item
+        android:id="@+id/bottom_action_document"
+        android:icon="@drawable/ic_paper_outlined"
+        android:title="Dashboard"/>
+    <item
+        android:id="@+id/bottom_action_message"
+        android:icon="@drawable/outline_message_24"
+        android:title="Messages"/>
+    <item
+        android:id="@+id/bottom_action_settings"
+        android:icon="@drawable/outline_settings_24"
+        android:title="Settings" />
+
+</menu>
