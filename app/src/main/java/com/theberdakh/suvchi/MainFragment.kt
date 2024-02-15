@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.theberdakh.suvchi.databinding.FragmentMainBinding
+import com.theberdakh.suvchi.util.replaceFragment
 
 class MainFragment: Fragment() {
     private var _binding: FragmentMainBinding? = null
@@ -17,6 +18,9 @@ class MainFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
+
+
+        replaceFragment(childFragmentManager, R.id.nested_fragment_container, OverviewFragment())
 
 
 
