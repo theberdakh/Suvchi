@@ -1,4 +1,4 @@
-package com.theberdakh.suvchi
+package com.theberdakh.suvchi.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +10,10 @@ import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.entriesOf
 import com.patrykandpatrick.vico.core.entry.entryModelOf
 import com.patrykandpatrick.vico.views.chart.ChartView
-import com.theberdakh.suvchi.databinding.FragmentOverviewBinding
+import com.theberdakh.suvchi.databinding.FragmentDashboardBinding
 
 class OverviewFragment : Fragment() {
-    private var _binding: FragmentOverviewBinding? = null
+    private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -21,7 +21,7 @@ class OverviewFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentOverviewBinding.inflate(inflater, container, false)
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:id="@+id/chart_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_chart_card"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:padding="8dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Suv sarfi"
+                    android:textColor="@color/color_text_primary"
+                    android:textAppearance="?textAppearanceTitleLarge" />
+
+
+            </FrameLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                style="?materialIconButtonOutlinedStyle"
+                app:strokeWidth="0dp"
+                android:textColor="@color/color_text_secondary"
+                app:iconTint="@color/color_text_secondary"
+                app:icon="@drawable/round_keyboard_arrow_down_24"
+                app:iconGravity="end"
+                app:iconPadding="8dp"
+                android:text="bugun" />
+
+        </RelativeLayout>
+
+
+        <com.patrykandpatrick.vico.views.chart.ChartView
+            android:id="@+id/chart_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:showStartAxis="true"
+            app:chartHorizontalScrollingEnabled="true"
+            app:chartZoomEnabled="true"
+            app:showBottomAxis="true"
+            app:chart="line"
+            />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:nestedScrollingEnabled="true"
+                android:scrollbars="none"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suv ochilgan vaqt"
+                    android:textColor="@color/color_text_secondary"
+                    app:chipStrokeColor="@color/color_container" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suv yopilgan vaqt"
+                    android:textColor="@color/color_text_secondary"
+                    app:chipStrokeColor="@color/color_container" />
+
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+
+    </LinearLayout>
+
+
+
+
+
+</FrameLayout>

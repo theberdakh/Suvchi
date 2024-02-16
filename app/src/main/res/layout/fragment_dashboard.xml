@@ -61,10 +61,48 @@
             app:chartZoomEnabled="true"
             app:showBottomAxis="true"
             app:chart="line"
+            app:lineChartStyle="@style/Chart7LineStyle"
+            app:startAxisStyle="@style/Chart3StartAxisTitleBackgroundStyle"
             />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:nestedScrollingEnabled="true"
+                android:scrollbars="none"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suv ochilgan vaqt"
+                    android:textColor="@color/color_text_secondary"
+                    app:chipStrokeColor="@color/color_container" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Suv yopilgan vaqt"
+                    android:textColor="@color/color_text_secondary"
+                    app:chipStrokeColor="@color/color_container" />
+
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
 
 
     </LinearLayout>
+
+
 
 
 
