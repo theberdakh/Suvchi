@@ -4,5 +4,9 @@
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/color_container</item>
     </style>
+    
+    <style name="RangeCalendarTheme" parent="ThemeOverlay.Material3.MaterialCalendar">
+        <item name="android:windowFullscreen">false</item>
+    </style>
 
 </resources>

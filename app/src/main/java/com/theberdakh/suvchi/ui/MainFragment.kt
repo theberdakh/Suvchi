@@ -35,7 +35,7 @@ class MainFragment : Fragment() {
                 R.id.bottom_action_message -> MessageFragment()
                 R.id.bottom_action_settings -> SettingsFragment()
                 R.id.bottom_action_dashboard -> OverviewFragment()
-                R.id.bottom_action_document -> SettingsFragment()
+                R.id.bottom_action_statistics -> StatisticsFragment()
                 else -> throw Exception("Not found fragment")
             }
             replaceFragment(childFragmentManager, R.id.nested_fragment_container, nestedFragment)

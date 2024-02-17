@@ -14,16 +14,18 @@
 
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_date_range"
             style="?materialIconButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Yanvar, 2023"
             android:textColor="@color/color_text_secondary"
-            app:icon="@drawable/round_keyboard_arrow_down_24"
+            app:icon="@drawable/round_edit_calendar_24"
             app:iconGravity="end"
             app:iconPadding="8dp"
             app:iconTint="@color/color_text_secondary"
             app:strokeWidth="0dp" />
+
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -107,12 +109,15 @@
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="0dp"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:padding="4dp">
 
                 <TextView
+                    android:id="@+id/textview_date_range"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="1-10 kunlar"

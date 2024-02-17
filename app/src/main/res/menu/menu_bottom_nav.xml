@@ -5,7 +5,7 @@
         android:icon="@drawable/outline_space_dashboard_24"
         android:title="Dashboard"/>
     <item
-        android:id="@+id/bottom_action_document"
+        android:id="@+id/bottom_action_statistics"
         android:icon="@drawable/ic_paper_outlined"
         android:title="Dashboard"/>
     <item
