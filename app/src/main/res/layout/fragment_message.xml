@@ -7,6 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_dialog"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

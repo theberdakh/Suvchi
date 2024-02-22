@@ -15,8 +15,8 @@
   -->
 
 <resources>
-    <color name="chart_3_color_1">#ffbb00</color>
-    <color name="chart_3_color_2">#9db591</color>
+    <color name="chart_3_color_1">@color/color_text_primary</color>
+    <color name="chart_3_color_2">@color/color_container</color>
 
     <style name="Chart3AxisStyle">
         <item name="showTitle">true</item>

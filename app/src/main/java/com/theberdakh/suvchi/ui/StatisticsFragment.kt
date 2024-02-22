@@ -1,14 +1,22 @@
 package com.theberdakh.suvchi.ui
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import com.google.android.material.datepicker.CalendarConstraints
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.theberdakh.suvchi.R
+import com.theberdakh.suvchi.data.AnalyticsDemo
 import com.theberdakh.suvchi.databinding.FragmentStatisticsBinding
+import com.theberdakh.suvchi.util.addFragmentToBackStack
+import com.theberdakh.suvchi.util.replaceFragment
+import com.theberdakh.suvchi.util.showSnackbar
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -26,10 +34,47 @@ class StatisticsFragment : Fragment() {
     ): View {
         _binding = FragmentStatisticsBinding.inflate(inflater, container, false)
 
+        implementButtonDateRange()
 
+        val adapter = DayAdapter(
+            { setAccepted() },
+            { setDeclined() },
+            {setCardClicked()}
+        )
+
+        binding.recyclerView.adapter = adapter
+        adapter.submitList(AnalyticsDemo.getDemoStatsForWeek())
+
+
+
+        return binding.root
+    }
+
+    private fun setCardClicked(){
+        addFragmentToBackStack(
+            requireActivity().supportFragmentManager,
+            R.id.fragmentContainerView,
+            DayFragment()
+        )
+    }
+    private fun setDeclined() {
+        showDialog(R.layout.dialog_decline)
+        //show dialog
+    }
+
+    private fun showDialog(@LayoutRes id: Int) {
+        val dialog = BottomSheet()
+
+        dialog.show(childFragmentManager, "Tag")
+
+    }
+
+    private fun setAccepted() {
+        //show dialog
+    }
+
+    private fun implementButtonDateRange() {
         binding.buttonDateRange.text = getLastDayRange(10)
-
-
         binding.buttonDateRange.setOnClickListener {
             val picker = MaterialDatePicker.Builder.dateRangePicker()
                 .setTheme(R.style.RangeCalendarTheme)
@@ -48,11 +93,9 @@ class StatisticsFragment : Fragment() {
             }
         }
 
-
-        return binding.root
     }
 
-    private fun getLastDayRange(lastDays: Int) : String{
+    private fun getLastDayRange(lastDays: Int): String {
         val calendar = Calendar.getInstance()
         val currentDate = Date()
         calendar.time = currentDate
@@ -64,14 +107,11 @@ class StatisticsFragment : Fragment() {
     }
 
 
-
-
-
     private fun formatDateToText(date: Date): String {
         val calendar = Calendar.getInstance()
         calendar.time = date
         val day = calendar.get(Calendar.DAY_OF_MONTH)
-        val month = calendar.get(Calendar.MONTH) +1
+        val month = calendar.get(Calendar.MONTH) + 1
         val year = calendar.get(Calendar.YEAR)
 
         return "$day/$month/$year"

@@ -1,109 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <LinearLayout
-        android:id="@+id/chart_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_chart_card"
-        android:padding="8dp"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
+        android:layout_margin="8dp"
+        android:background="@drawable/shape_card_overview"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <FrameLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:padding="8dp"
-               >
+                android:layout_weight="1"
+                android:padding="4dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Suv sarfi"
+                    android:text="Yil davomida umumiy"
+                    android:textAppearance="?textAppearanceTitleSmall"
                     android:textColor="@color/color_text_primary"
-                    android:textAppearance="?textAppearanceTitleLarge" />
-
+                    android:textStyle="bold" />
 
             </FrameLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                style="?materialIconButtonOutlinedStyle"
-                app:strokeWidth="0dp"
-                android:textColor="@color/color_text_secondary"
-                app:iconTint="@color/color_text_secondary"
-                app:icon="@drawable/round_keyboard_arrow_down_24"
-                app:iconGravity="end"
-                app:iconPadding="8dp"
-                android:text="bugun" />
+                android:padding="4dp">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/textview_date_range"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="2024"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:background="?android:selectableItemBackground"
+                    android:focusable="true"
+                    android:textAppearance="?textAppearanceTitleSmall"
+                    android:textColor="@color/color_text_primary"
+                    android:textStyle="bold"
+                    app:drawableEndCompat="@drawable/round_keyboard_arrow_down_24" />
+
+            </FrameLayout>
 
 
-        <com.patrykandpatrick.vico.views.chart.ChartView
-            android:id="@+id/chart_view"
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:showStartAxis="true"
-            app:chartHorizontalScrollingEnabled="true"
-            app:chartZoomEnabled="true"
-            app:showBottomAxis="true"
-            app:chart="line"
-            app:lineChartStyle="@style/Chart7LineStyle"
-            app:startAxisStyle="@style/Chart3StartAxisTitleBackgroundStyle"
-            />
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
-
-
-            <com.google.android.material.chip.ChipGroup
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:nestedScrollingEnabled="true"
-                android:scrollbars="none"
-                app:singleLine="true"
-                app:singleSelection="true">
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="4dp">
 
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Suv ochilgan vaqt"
-                    android:textColor="@color/color_text_secondary"
-                    app:chipStrokeColor="@color/color_container" />
+                    android:orientation="vertical"
+                    android:layout_marginVertical="4dp">
 
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="7040 m3"
+                        android:textAppearance="?textAppearanceBodyLarge"
+                        android:textColor="@color/color_text_primary"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ja'mi sarflangan"
+                        android:textAppearance="?textAppearanceBodySmall"
+                        android:textColor="@color/color_text_secondary"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Suv yopilgan vaqt"
-                    android:textColor="@color/color_text_secondary"
-                    app:chipStrokeColor="@color/color_container" />
+                    android:orientation="vertical"
+                    android:layout_marginVertical="4dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="~7.1 m/s"
+                        android:textAppearance="?textAppearanceBodyLarge"
+                        android:textColor="@color/color_text_primary"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="O'rtacha tezlik"
+                        android:textAppearance="?textAppearanceBodySmall"
+                        android:textColor="@color/color_text_secondary"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
 
-            </com.google.android.material.chip.ChipGroup>
 
-        </HorizontalScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginVertical="4dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1213 soat"
+                        android:textAppearance="?textAppearanceBodyLarge"
+                        android:textColor="@color/color_text_primary"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Suvdan foydalanish"
+                        android:textAppearance="?textAppearanceBodySmall"
+                        android:textColor="@color/color_text_secondary"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginVertical="4dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="12.192 mln"
+                        android:textAppearance="?textAppearanceBodyLarge"
+                        android:textColor="@color/color_text_primary"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Xarajat"
+                        android:textAppearance="?textAppearanceBodySmall"
+                        android:textColor="@color/color_text_secondary"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
-
-
-</FrameLayout>
+</LinearLayout>

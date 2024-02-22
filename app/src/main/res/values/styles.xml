@@ -9,4 +9,9 @@
         <item name="android:windowFullscreen">false</item>
     </style>
 
+    <style name="FullBottomSheetStyle" parent="Theme.Design.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
 </resources>

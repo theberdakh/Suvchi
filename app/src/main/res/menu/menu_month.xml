@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_all_year"
+        android:title="Yil davomida"
+        android:icon="@drawable/round_edit_calendar_24"/>
+    <item android:id="@+id/action_jan"
+        android:title="Yanvar"
+        android:icon="@drawable/round_edit_calendar_24"/>
+    <item android:id="@+id/action_feb"
+        android:title="Fevral"
+        android:icon="@drawable/round_edit_calendar_24"/>
+
+    <item android:id="@+id/action_march"
+        android:title="Mart"
+        android:icon="@drawable/round_edit_calendar_24"/>
+    <item android:id="@+id/action_april"
+        android:title="Aprel"
+        android:icon="@drawable/round_edit_calendar_24"/>
+    <item
+        android:id="@+id/action_may"
+        android:icon="@drawable/round_edit_calendar_24"
+        android:title="May" />
+    <item
+        android:id="@+id/action_june"
+        android:icon="@drawable/round_edit_calendar_24"
+        android:title="Iyun" />
+</menu>

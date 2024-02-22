@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -9,26 +10,27 @@
         android:id="@+id/chart_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_chart_card"
+        android:background="@drawable/shape_circular"
         android:padding="8dp"
-        android:layout_margin="16dp"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="2"
             android:orientation="horizontal">
 
             <FrameLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:padding="8dp"
                 >
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Suv sarfi"
                     android:textColor="@color/color_text_primary"
                     android:textAppearance="?textAppearanceTitleLarge" />
@@ -37,9 +39,10 @@
             </FrameLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
+                android:id="@+id/chart_date"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 style="?materialIconButtonOutlinedStyle"
                 app:strokeWidth="0dp"
                 android:textColor="@color/color_text_secondary"
@@ -47,21 +50,28 @@
                 app:icon="@drawable/round_keyboard_arrow_down_24"
                 app:iconGravity="end"
                 app:iconPadding="8dp"
-                android:text="bugun" />
+                android:text="Yil davomida" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
-
-        <com.patrykandpatrick.vico.views.chart.ChartView
-            android:id="@+id/chart_view"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:showStartAxis="true"
-            app:chartHorizontalScrollingEnabled="true"
-            app:chartZoomEnabled="true"
-            app:showBottomAxis="true"
-            app:chart="line"
-            />
+            android:layout_height="wrap_content">
+
+            <com.patrykandpatrick.vico.views.chart.ChartView
+                android:id="@+id/chart_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:showStartAxis="true"
+                app:chartHorizontalScrollingEnabled="true"
+                app:chartZoomEnabled="true"
+                app:showBottomAxis="true"
+                app:chart="line"
+                />
+
+        </FrameLayout>
+
+
 
         <HorizontalScrollView
             android:layout_width="match_parent"
