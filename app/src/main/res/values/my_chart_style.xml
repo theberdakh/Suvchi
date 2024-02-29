@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyChartStyle">
+        <item name="color">@color/color_text_primary</item>
+        <item name="showDataLabels">true</item>
+    </style>
+</resources>

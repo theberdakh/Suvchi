@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.theberdakh.suvchi.R
 import com.theberdakh.suvchi.databinding.DialogDeclineBinding
 
 class BottomSheet: BottomSheetDialogFragment(){
@@ -18,6 +19,9 @@ class BottomSheet: BottomSheetDialogFragment(){
         savedInstanceState: Bundle?
     ): View {
         _binding = DialogDeclineBinding.inflate(inflater, container, false)
+        setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.FullBottomSheetStyle)
+
+        binding.layoutWaterUsage.isVisible = false
 
         binding.titleWaterUsage.setOnClickListener {
             binding.layoutWaterUsage.isVisible = !binding.layoutWaterUsage.isVisible

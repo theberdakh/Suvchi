@@ -58,10 +58,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/my_test_chart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+
             <com.patrykandpatrick.vico.views.chart.ChartView
                 android:id="@+id/chart_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:lineChartStyle="@style/MyChartStyle"
                 app:showStartAxis="true"
                 app:chartHorizontalScrollingEnabled="true"
                 app:chartZoomEnabled="true"

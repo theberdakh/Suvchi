@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/txt_card_3"
                 android:layout_width="match_parent"

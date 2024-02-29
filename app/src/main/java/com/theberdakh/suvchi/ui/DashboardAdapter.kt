@@ -6,6 +6,10 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.patrykandpatrick.vico.core.entry.entriesOf
 import com.patrykandpatrick.vico.core.entry.entryModelOf
 import com.theberdakh.suvchi.R
@@ -22,6 +26,15 @@ class DashboardAdapter(private val onDateClick: (View) -> Unit): ListAdapter<Ana
             binding.chartDate.setOnClickListener {
                 onDateClick.invoke(binding.chartDate)
             }
+
+            val lineData = LineData()
+
+
+            for(a in 1..10){
+                lineData.addEntry(Entry(12f, 14f), 1)
+            }
+            binding.myTestChart.data = lineData
+
 
 
         }

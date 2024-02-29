@@ -226,6 +226,7 @@
             android:layout_width="match_parent"
             app:cornerRadius="12dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:backgroundTint="@color/color_primary_variant"
             android:layout_gravity="start"
             android:text="Yuborish"/>
