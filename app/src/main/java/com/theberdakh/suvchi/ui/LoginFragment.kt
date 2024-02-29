@@ -30,6 +30,7 @@ class LoginFragment: Fragment() {
         }
 
         binding.loginButton.setOnClickListener {
+            // add password, login validator?
             LocalPreferences().isLoggedIn = true
             val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
             val inflater = navHostFragment.navController.navInflater

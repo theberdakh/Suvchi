@@ -157,6 +157,8 @@
     </androidx.cardview.widget.CardView>
 
 
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card_switch"
         android:layout_width="match_parent"
@@ -206,7 +208,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp"
+                android:padding="8dp"
+                android:layout_margin="4dp"
                 android:weightSum="2">
 
                 <TextView
@@ -245,82 +248,59 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/acc_settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:backgroundTint="@color/background_card"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_switch">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_card"
+            android:padding="8dp"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/shape_shadow">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
                 android:text="Akkaunt Sozlamalari"
                 android:textColor="@color/color_txt"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <ImageView
-                android:id="@+id/btn_next_acc_settings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:padding="10dp"
-                android:src="@drawable/ic_next_"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
+                app:drawableEndCompat="@drawable/ic_next_" />
 
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_delete_acc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginHorizontal="16dp"
-        android:backgroundTint="#FEF0F0"
-        app:cardCornerRadius="16dp">
+        </FrameLayout>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+
+
+
+        <FrameLayout
+            android:id="@+id/layoutLogOut"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FEF0F0"
+            android:elevation="4dp"
+            android:background="@drawable/shape_shadow"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true">
 
             <TextView
+                android:id="@+id/textViewLogOut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:text="Akkauntni yo'q qilish"
+                android:text="Chiqish"
+                android:drawableTint="#E37272"
                 android:textColor="#E37272"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:drawableEndCompat="@drawable/round_logout_24" />
 
+        </FrameLayout>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
 
 
 </LinearLayout>
