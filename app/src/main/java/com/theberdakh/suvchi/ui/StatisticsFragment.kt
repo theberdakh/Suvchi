@@ -1,22 +1,16 @@
 package com.theberdakh.suvchi.ui
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.theberdakh.suvchi.R
-import com.theberdakh.suvchi.data.AnalyticsDemo
+import com.theberdakh.suvchi.data.local.demo.AnalyticsDemo
 import com.theberdakh.suvchi.databinding.FragmentStatisticsBinding
 import com.theberdakh.suvchi.util.addFragmentToBackStack
-import com.theberdakh.suvchi.util.replaceFragment
-import com.theberdakh.suvchi.util.showSnackbar
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="color" name="color"/>
+    <attr format="reference" name="columnLayerStyle"/>
+    <attr format="float" name="dataLabelRotationDegrees"/>
+    <attr format="reference" name="dataLabelStyle"/>
+    <attr format="enum" name="dataLabelVerticalPosition">
+        <enum name="top" value="0"/>
+        <enum name="center" value="1"/>
+        <enum name="bottom" value="2"/>
+    </attr>
+    <attr format="reference" name="line1Spec"/>
+    <attr format="reference" name="line2Spec"/>
+    <attr format="reference" name="line3Spec"/>
+    <attr format="reference" name="lineLayerStyle"/>
+    <attr format="color" name="negativeColor"/>
+    <attr format="color" name="positiveColor"/>
+    <attr format="reference" name="shapeStyle"/>
+    <attr format="boolean" name="showDataLabels"/>
+    <attr format="color" name="strokeColor"/>
+    <attr format="dimension" name="strokeWidth"/>
+    <declare-styleable name="Axis">
+        <attr format="boolean" name="showAxisLine"/>
+        <attr format="reference" name="axisLineStyle"/>
+        <attr format="boolean" name="showGuideline"/>
+        <attr format="reference" name="axisGuidelineStyle"/>
+        <attr format="boolean" name="showTick"/>
+        <attr format="reference" name="axisTickStyle"/>
+        <attr format="reference" name="axisLabelStyle"/>
+        <attr format="dimension" name="axisTickLength"/>
+        <attr format="color|reference" name="axisLabelBackground"/>
+        <attr format="enum" name="verticalAxisHorizontalLabelPosition">
+            <enum name="outside" value="0"/>
+            <enum name="inside" value="1"/>
+        </attr>
+        <attr format="enum" name="verticalAxisVerticalLabelPosition">
+            <enum name="center" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="bottom" value="2"/>
+        </attr>
+        <attr format="float" name="labelRotationDegrees"/>
+        <attr format="reference" name="titleStyle"/>
+        <attr format="string|reference" name="title"/>
+        <attr format="boolean|reference" name="showTitle"/>
+        <attr format="integer" name="horizontalAxisLabelSpacing"/>
+        <attr format="integer" name="horizontalAxisLabelOffset"/>
+        <attr format="boolean" name="shiftExtremeHorizontalAxisTicks"/>
+        <attr format="boolean" name="addExtremeHorizontalAxisLabelPadding"/>
+        <attr format="boolean" name="shiftTopVerticalAxisLines"/>
+        <attr format="integer" name="maxVerticalAxisItemCount"/>
+    </declare-styleable>
+    <declare-styleable name="CartesianChartView">
+        <attr format="integer" name="layers">
+            <flag name="column" value="1"/>
+            <flag name="line" value="2"/>
+        </attr>
+        <attr format="reference" name="axisStyle"/>
+        <attr format="reference" name="startAxisStyle"/>
+        <attr format="reference" name="topAxisStyle"/>
+        <attr format="reference" name="endAxisStyle"/>
+        <attr format="reference" name="bottomAxisStyle"/>
+        <attr name="columnLayerStyle"/>
+        <attr name="lineLayerStyle"/>
+        <attr format="boolean" name="showStartAxis"/>
+        <attr format="boolean" name="showTopAxis"/>
+        <attr format="boolean" name="showEndAxis"/>
+        <attr format="boolean" name="showBottomAxis"/>
+        <attr format="boolean" name="chartHorizontalScrollingEnabled"/>
+        <attr format="boolean" name="chartZoomEnabled"/>
+        <attr format="dimension" name="fadingEdgeWidth"/>
+        <attr format="dimension" name="startFadingEdgeWidth"/>
+        <attr format="dimension" name="endFadingEdgeWidth"/>
+        <attr format="dimension" name="fadingEdgeVisibilityThreshold"/>
+        <attr format="string" name="fadingEdgeVisibilityInterpolator"/>
+        <attr format="enum" name="horizontalLayout">
+            <enum name="segmented" value="0"/>
+            <enum name="fullWidth" value="1"/>
+        </attr>
+        <attr format="dimension" name="scalableStartContentPadding"/>
+        <attr format="dimension" name="scalableEndContentPadding"/>
+        <attr format="dimension" name="unscalableStartContentPadding"/>
+        <attr format="dimension" name="unscalableEndContentPadding"/>
+        <attr format="integer" name="previewMinX"/>
+        <attr format="integer" name="previewMaxX"/>
+        <attr format="integer" name="previewMinY"/>
+        <attr format="integer" name="previewMaxY"/>
+        <attr format="integer" name="previewColumnSeriesCount"/>
+        <attr format="integer" name="previewLineSeriesCount"/>
+    </declare-styleable>
+    <declare-styleable name="ColumnCartesianLayerStyle">
+        <attr format="reference" name="column1"/>
+        <attr format="reference" name="column2"/>
+        <attr format="reference" name="column3"/>
+        <attr format="dimension" name="columnOuterSpacing"/>
+        <attr format="dimension" name="columnInnerSpacing"/>
+        <attr name="showDataLabels"/>
+        <attr name="dataLabelStyle"/>
+        <attr name="dataLabelVerticalPosition"/>
+        <attr name="dataLabelRotationDegrees"/>
+        <attr format="enum" name="mergeMode">
+            <enum name="grouped" value="0"/>
+            <enum name="stacked" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="ComponentStyle">
+        <attr name="color"/>
+        <attr name="shapeStyle"/>
+        <attr name="strokeColor"/>
+        <attr name="strokeWidth"/>
+        <attr format="reference" name="overlayingComponentStyle"/>
+        <attr format="dimension" name="overlayingComponentPadding"/>
+    </declare-styleable>
+    <declare-styleable name="LineCartesianLayerStyle">
+        <attr name="line1Spec"/>
+        <attr name="line2Spec"/>
+        <attr name="line3Spec"/>
+        <attr format="dimension" name="spacing"/>
+    </declare-styleable>
+    <declare-styleable name="LineComponent">
+        <attr name="color"/>
+        <attr format="dimension" name="thickness"/>
+        <attr name="shapeStyle"/>
+        <attr name="strokeColor"/>
+        <attr name="strokeWidth"/>
+    </declare-styleable>
+    <declare-styleable name="LineSpec">
+        <attr name="color"/>
+        <attr name="positiveColor"/>
+        <attr name="negativeColor"/>
+        <attr format="color" name="gradientTopColor"/>
+        <attr format="color" name="gradientBottomColor"/>
+        <attr format="color" name="positiveGradientTopColor"/>
+        <attr format="color" name="positiveGradientBottomColor"/>
+        <attr format="color" name="negativeGradientTopColor"/>
+        <attr format="color" name="negativeGradientBottomColor"/>
+        <attr format="dimension" name="pointSize"/>
+        <attr format="dimension" name="lineThickness"/>
+        <attr format="reference" name="pointStyle"/>
+        <attr format="fraction" name="cubicStrength"/>
+        <attr name="showDataLabels"/>
+        <attr name="dataLabelStyle"/>
+        <attr name="dataLabelVerticalPosition"/>
+        <attr name="dataLabelRotationDegrees"/>
+    </declare-styleable>
+    <declare-styleable name="Shape">
+        <attr format="dimension|fraction" name="cornerSize"/>
+        <attr format="enum" name="cornerTreatment">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+
+        <attr format="dimension|fraction" name="topStartCornerSize"/>
+        <attr format="enum" name="topStartCornerTreatment">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+
+        <attr format="dimension|fraction" name="topEndCornerSize"/>
+        <attr format="enum" name="topEndCornerTreatment">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+
+        <attr format="dimension|fraction" name="bottomStartCornerSize"/>
+        <attr format="enum" name="bottomStartCornerTreatment">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+
+        <attr format="dimension|fraction" name="bottomEndCornerSize"/>
+        <attr format="enum" name="bottomEndCornerTreatment">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+
+        <attr format="dimension" name="dashLength"/>
+        <attr format="dimension" name="dashGapLength"/>
+    </declare-styleable>
+    <declare-styleable name="TextComponentStyle">
+        <attr format="color" name="labelColor"/>
+        <attr format="reference" name="backgroundStyle"/>
+        <attr name="android:padding"/>
+        <attr name="android:paddingStart"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingEnd"/>
+        <attr name="android:paddingBottom"/>
+        <attr name="android:paddingVertical"/>
+        <attr name="android:paddingHorizontal"/>
+        <attr name="android:fontFamily"/>
+        <attr name="fontFamily"/>
+        <attr name="android:textFontWeight"/>
+        <attr name="android:fontStyle"/>
+        <attr name="typeface">
+            <enum name="normal" value="0"/>
+            <enum name="sans" value="1"/>
+            <enum name="serif" value="2"/>
+            <enum name="monospace" value="3"/>
+        </attr>
+        <attr name="fontStyle"/>
+        <attr name="android:textSize"/>
+        <attr name="android:maxLines"/>
+        <attr name="android:ellipsize"/>
+        <attr format="dimension" name="margin"/>
+        <attr format="dimension" name="marginStart"/>
+        <attr format="dimension" name="marginTop"/>
+        <attr format="dimension" name="marginEnd"/>
+        <attr format="dimension" name="marginBottom"/>
+        <attr format="dimension" name="marginVertical"/>
+        <attr format="dimension" name="marginHorizontal"/>
+        <attr format="enum" name="textAlignment">
+            <enum name="normal" value="0"/>
+            <enum name="opposite" value="1"/>
+            <enum name="center" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

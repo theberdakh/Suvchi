@@ -13,10 +13,11 @@ class LocalPreferences {
         private val pref = App.instance.getSharedPreferences("pref", Context.MODE_PRIVATE)
     }
 
+    /*Auth*/
     var isLoggedIn by BooleanPreference(pref, false)
-    var userName by StringPreference(pref)
-    var password by StringPreference(pref)
     var accessToken by StringPreference(pref)
     var refreshToken by StringPreference(pref)
+
+    /*User info*/
 
 }

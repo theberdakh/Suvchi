@@ -5,12 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Orientation
-import com.theberdakh.suvchi.data.AnalyticsDemo
+import com.theberdakh.suvchi.data.local.demo.AnalyticsDemo
 import com.theberdakh.suvchi.databinding.FragmentDayBinding
 
 class DayFragment: Fragment() {

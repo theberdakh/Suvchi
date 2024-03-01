@@ -65,16 +65,23 @@
                 android:visibility="gone"
                 />
 
+
             <com.patrykandpatrick.vico.views.chart.ChartView
                 android:id="@+id/chart_view"
                 android:layout_width="match_parent"
+                app:startAxisStyle="@style/Chart1StartAxisStyle"
+                app:bottomAxisStyle="@style/Chart3BottomAxisTitleStyle"
                 android:layout_height="wrap_content"
-                app:lineChartStyle="@style/MyChartStyle"
+                app:lineChartStyle="@style/Chart7Line3Style"
                 app:showStartAxis="true"
                 app:chartHorizontalScrollingEnabled="true"
                 app:chartZoomEnabled="true"
                 app:showBottomAxis="true"
                 app:chart="line"
+                style="@style/Chart7LineStyle"
+                app:gradientTopColor="@color/color_primary_variant"
+                app:color="@color/color_primary_variant"
+
                 />
 
         </FrameLayout>

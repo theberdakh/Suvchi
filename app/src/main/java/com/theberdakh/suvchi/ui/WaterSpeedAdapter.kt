@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.theberdakh.suvchi.data.WaterSpeed
+import com.theberdakh.suvchi.data.local.demo.WaterSpeed
 import com.theberdakh.suvchi.databinding.ItemListWaterSpeedBinding
 
 class WaterSpeedAdapter: ListAdapter<WaterSpeed, WaterSpeedAdapter.WaterSpeedViewHolder>(WaterSpeed.Callback) {

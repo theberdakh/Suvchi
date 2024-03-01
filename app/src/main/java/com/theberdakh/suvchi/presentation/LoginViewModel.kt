@@ -2,8 +2,8 @@ package com.theberdakh.suvchi.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.theberdakh.suvchi.data.remote.model.LoginRequest
-import com.theberdakh.suvchi.data.remote.model.LoginResponse
+import com.theberdakh.suvchi.data.remote.model.auth.LoginRequest
+import com.theberdakh.suvchi.data.remote.model.auth.LoginResponse
 import com.theberdakh.suvchi.data.remote.model.ResultData
 import com.theberdakh.suvchi.domain.AuthRepository
 import kotlinx.coroutines.flow.MutableSharedFlow

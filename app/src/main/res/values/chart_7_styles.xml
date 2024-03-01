@@ -19,6 +19,9 @@
     <color name="chart_7_color_2">#91b1fd</color>
     <color name="chart_7_color_3">#8fdaff</color>
 
+    <style name="MyLinearChartStyle">
+    </style>
+
     <style name="Chart7LineStyle">
         <item name="gradientTopColor">@android:color/transparent</item>
         <item name="gradientBottomColor">@android:color/transparent</item>

@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.theberdakh.suvchi.R
-import com.theberdakh.suvchi.data.DailyUsage
+import com.theberdakh.suvchi.data.local.demo.DailyUsage
 import com.theberdakh.suvchi.databinding.ItemListDayCardBinding
 
 class DayAdapter(

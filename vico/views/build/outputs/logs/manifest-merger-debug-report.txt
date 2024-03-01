@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Github Libraries\vico\vico\views\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest12464925503749681694.xml:2:13-83
+INJECTED from D:\Github Libraries\vico\vico\views\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest12464925503749681694.xml:2:13-83
+	package
+		INJECTED from D:\Github Libraries\vico\vico\views\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest12464925503749681694.xml
+	xmlns:android
+		ADDED from D:\Github Libraries\vico\vico\views\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest12464925503749681694.xml:2:23-81
+uses-sdk
+INJECTED from D:\Github Libraries\vico\vico\views\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest12464925503749681694.xml reason: use-sdk injection requested
+INJECTED from D:\Github Libraries\vico\vico\views\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest12464925503749681694.xml
+INJECTED from D:\Github Libraries\vico\vico\views\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest12464925503749681694.xml
+	android:targetSdkVersion
+		INJECTED from D:\Github Libraries\vico\vico\views\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest12464925503749681694.xml
+	android:minSdkVersion
+		INJECTED from D:\Github Libraries\vico\vico\views\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest12464925503749681694.xml
