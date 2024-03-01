@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:animateLayoutChanges="true"
         android:padding="8dp">
 
         <com.google.android.material.bottomsheet.BottomSheetDragHandleView
@@ -205,11 +206,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Shikoyat matni"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeColor="@color/color_container"
+            style="@style/RoundedTextInputLayout"
             app:endIconMode="custom"
             app:helperText="Shikoyat yuborishdan oldin yuqoridagi hisobatlarni yana bir bor ko'zdan kechiring. ">
 

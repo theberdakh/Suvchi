@@ -14,8 +14,9 @@ class LocalPreferences {
     }
 
     var isLoggedIn by BooleanPreference(pref, false)
-    var token by StringPreference(pref)
-    var isInitialized by IntPreference(pref, 0)
-    var hasConnection by BooleanPreference(pref, false)
+    var userName by StringPreference(pref)
+    var password by StringPreference(pref)
+    var accessToken by StringPreference(pref)
+    var refreshToken by StringPreference(pref)
 
 }

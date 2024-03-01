@@ -1,7 +1,10 @@
 package com.theberdakh.suvchi.app
 
 import android.app.Application
+import com.theberdakh.suvchi.di.appModule
 import com.theberdakh.suvchi.di.localModule
+import com.theberdakh.suvchi.di.networkModule
+import com.theberdakh.suvchi.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -17,7 +20,7 @@ class App: Application() {
 
         startKoin {
             androidContext(this@App)
-            modules(localModule)
+            modules(appModule,localModule, networkModule, viewModelModule)
         }
 
     }
