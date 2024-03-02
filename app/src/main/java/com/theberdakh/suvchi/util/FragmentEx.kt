@@ -3,9 +3,11 @@ package com.theberdakh.suvchi.util
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.theberdakh.suvchi.R
 
 fun replaceFragment(fragmentManager: FragmentManager, @IdRes fragmentContainer: Int, fragment: Fragment){
     val transaction = fragmentManager.beginTransaction()
+   transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out, android.R.anim.fade_in, android.R.anim.fade_out)
     transaction.replace(fragmentContainer, fragment)
     transaction.commit()
 }

@@ -2,6 +2,7 @@ package com.theberdakh.suvchi.di
 
 import com.theberdakh.suvchi.data.local.pref.LocalPreferences
 import com.theberdakh.suvchi.data.remote.LoginApi
+import com.theberdakh.suvchi.data.remote.UserApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,7 +23,7 @@ val networkModule = module {
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor { chain: Interceptor.Chain ->
                 val newRequest = chain.request().newBuilder()
-                    .addHeader("Authorization", LocalPreferences().accessToken)
+                    .addHeader("Authorization", "Bearer ${LocalPreferences().getUserAccessToken()}")
                     .build()
 
                 chain.proceed(newRequest)
@@ -42,6 +43,10 @@ val networkModule = module {
 
     single<LoginApi> {
         get<Retrofit>().create(LoginApi::class.java)
+    }
+
+    single<UserApi> {
+        get<Retrofit>().create(UserApi::class.java)
     }
 
 

@@ -1,5 +1,6 @@
 package com.theberdakh.suvchi.ui
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,10 @@ import com.theberdakh.suvchi.R
 import com.theberdakh.suvchi.data.local.pref.LocalPreferences
 import com.theberdakh.suvchi.databinding.FragmentLoginBinding
 import com.theberdakh.suvchi.presentation.LoginViewModel
+import com.theberdakh.suvchi.presentation.UserViewModel
+import com.theberdakh.suvchi.util.hide
 import com.theberdakh.suvchi.util.show
+import com.theberdakh.suvchi.util.showSnackbar
 import com.theberdakh.suvchi.util.showToast
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -25,6 +29,7 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = checkNotNull(_binding)
     private val viewModel by viewModel<LoginViewModel>()
+    private val userViewModel by viewModel<UserViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,8 +41,16 @@ class LoginFragment : Fragment() {
         toggleVisibilityLoginButton()
         initObservers()
 
+        binding.loginButton.hide()
+        binding.progressBar.hide()
+
+
         binding.loginButton.setOnClickListener {
-            if (checkEditText(binding.passwordLayout, binding.passwordEditText) && checkEditText(binding.userNameLayout, binding.usernameEditText)) {
+            if (checkEditText(binding.passwordLayout, binding.passwordEditText) && checkEditText(
+                    binding.userNameLayout,
+                    binding.usernameEditText
+                )
+            ) {
                 lifecycleScope.launch {
                     viewModel.login(
                         binding.usernameEditText.text.toString(),
@@ -77,13 +90,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.responseIsSuccessful.onEach {
-            LocalPreferences().isLoggedIn = true
-            val navHostFragment =
-                requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-            val inflater = navHostFragment.navController.navInflater
-            val graph = inflater.inflate(R.navigation.parent_nav)
-            navHostFragment.navController.graph = graph
+        viewModel.responseIsSuccessful.onEach { loginResponse ->
+            LocalPreferences().saveUserToken(loginResponse)
+            userViewModel.getUserProfile()
+            getUserProfileData()
         }.launchIn(lifecycleScope)
 
         viewModel.responseIsMessage.onEach {
@@ -94,6 +104,41 @@ class LoginFragment : Fragment() {
             it.printStackTrace()
         }.launchIn(lifecycleScope)
     }
+
+    private fun getUserProfileData() {
+
+        userViewModel.userProfileResponseSuccessful.onEach { userResponse ->
+            showProgressDialog()
+           LocalPreferences().saveUserResponse(userResponse)
+            val navHostFragment =
+                requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            val inflater = navHostFragment.navController.navInflater
+            val graph = inflater.inflate(R.navigation.parent_nav)
+
+            navHostFragment.navController.graph = graph
+
+        }.launchIn(lifecycleScope)
+
+        userViewModel.userProfileResponseMessage.onEach {
+            showToast(it)
+        }.launchIn(lifecycleScope)
+
+        userViewModel.userProfileResponseError.onEach {
+            showToast(it.message.toString())
+        }.launchIn(lifecycleScope)
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.progressBar.hide()
+    }
+
+    private fun showProgressDialog() {
+        binding.loginButton.hide()
+        binding.progressBar.show()
+    }
+
 
     override fun onDestroyView() {
         _binding = null

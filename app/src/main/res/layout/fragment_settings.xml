@@ -42,6 +42,7 @@
 
 
                 <TextView
+                    android:id="@+id/textview_profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Palenshe  Tolenshiev"
@@ -52,6 +53,7 @@
 
 
                 <TextView
+                    android:id="@+id/textview_profile_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fermer"

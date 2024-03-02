@@ -17,22 +17,16 @@ class DashboardAdapter(private val onDateClick: (View) -> Unit): ListAdapter<Ana
 {
     inner class DashboardViewHolder(private val binding: ItemListDayChartBinding): ViewHolder(binding.root){
         fun bind(analytics: Analytics){
-            val twoLine = entryModelOf(entriesOf(4f, 12f, 8f, 16f), entriesOf(12f, 16f, 4f, 12f))
+
+            // entriesOf(12f, 16f, 4f, 12f)
+            val twoLine = entryModelOf(entriesOf(4f, 12f, 8f, 16f))
             binding.title.text = analytics.title
             binding.chartView.runInitialAnimation = true
-            binding.chartView.marker
             binding.chartView.setModel(twoLine)
             binding.chartDate.setOnClickListener {
                 onDateClick.invoke(binding.chartDate)
             }
 
-            val lineData = LineData()
-
-
-            for(a in 1..10){
-                lineData.addEntry(Entry(12f, 14f), 1)
-            }
-            binding.myTestChart.data = lineData
 
 
 

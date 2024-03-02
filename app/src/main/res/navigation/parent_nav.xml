@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.theberdakh.suvchi.ui.MainFragment"
-        android:label="MainFragment"
-        />
+        android:label="MainFragment"/>
 
 </navigation>

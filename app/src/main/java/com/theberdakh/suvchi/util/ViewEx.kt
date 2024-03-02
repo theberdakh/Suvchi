@@ -18,7 +18,7 @@ fun View.show(){
 }
 
 fun View.invisible() {
-    this.visibility = View.INVISIBLE
+    this.visibility = View.GONE
 }
 
 /* TextView Ex */

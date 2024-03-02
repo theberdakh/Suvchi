@@ -20,6 +20,7 @@ import java.util.TimeZone
 class StatisticsFragment : Fragment() {
     private var _binding: FragmentStatisticsBinding? = null
     private val binding get() = checkNotNull(_binding)
+    private lateinit var adapter: DayAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,10 +28,13 @@ class StatisticsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStatisticsBinding.inflate(inflater, container, false)
-
         implementButtonDateRange()
 
-        val adapter = DayAdapter(
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.setItemViewCacheSize(10)
+
+
+         adapter = DayAdapter(
             { setAccepted() },
             { setDeclined() },
             {setCardClicked()}
@@ -42,6 +46,28 @@ class StatisticsFragment : Fragment() {
 
 
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+
     }
 
     private fun setCardClicked(){

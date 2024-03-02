@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val loginGraph = inflater.inflate(R.navigation.login_nav)
         val parenGraph = inflater.inflate(R.navigation.parent_nav)
 
-        if (LocalPreferences().isLoggedIn){
+        if (LocalPreferences().isUserLoggedIn()){
             navHostFragment.navController.graph = parenGraph
         } else {
             navHostFragment.navController.graph = loginGraph

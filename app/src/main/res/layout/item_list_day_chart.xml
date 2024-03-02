@@ -58,30 +58,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/my_test_chart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                />
 
 
             <com.patrykandpatrick.vico.views.chart.ChartView
                 android:id="@+id/chart_view"
                 android:layout_width="match_parent"
-                app:startAxisStyle="@style/Chart1StartAxisStyle"
-                app:bottomAxisStyle="@style/Chart3BottomAxisTitleStyle"
                 android:layout_height="wrap_content"
-                app:lineChartStyle="@style/Chart7Line3Style"
                 app:showStartAxis="true"
-                app:chartHorizontalScrollingEnabled="true"
                 app:chartZoomEnabled="true"
+                app:chartHorizontalScrollingEnabled="true"
                 app:showBottomAxis="true"
                 app:chart="line"
-                style="@style/Chart7LineStyle"
-                app:gradientTopColor="@color/color_primary_variant"
-                app:color="@color/color_primary_variant"
-
+                app:horizontalLayout="fullWidth"
+                app:lineChartStyle="@style/Chart1LineLayerStyle"
+                app:fadingEdgeVisibilityInterpolator="androidx.interpolator.view.animation.FastOutSlowInInterpolator"
+                app:fadingEdgeWidth="32dp"
                 />
 
         </FrameLayout>

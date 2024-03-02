@@ -14,6 +14,10 @@ class DayAdapter(
     val onClick: (DailyUsage) -> Unit
 ) : ListAdapter<DailyUsage, DayAdapter.DayViewHolder>(DailyUsage.Callback) {
 
+    init {
+        setHasStableIds(true)
+    }
+
     inner class DayViewHolder(private val binding: ItemListDayCardBinding) :
         ViewHolder(binding.root) {
         fun bind(dailyUsage: DailyUsage) {
