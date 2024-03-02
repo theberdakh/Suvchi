@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.theberdakh.suvchi.R
 import com.theberdakh.suvchi.data.local.pref.LocalPreferences
 import com.theberdakh.suvchi.databinding.FragmentSettingsBinding
@@ -44,11 +46,23 @@ class SettingsFragment: Fragment() {
 
 
         binding.layoutLogOut.setOnClickListener {
-            LocalPreferences().clearUserData()
-            val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-            val inflater = navHostFragment.navController.navInflater
-            val graph = inflater.inflate(R.navigation.login_nav)
-            navHostFragment.navController.graph = graph
+
+            MaterialAlertDialogBuilder(requireContext())
+                .setBackground(AppCompatResources.getDrawable(requireContext(), R.drawable.shape_chart_card))
+                .setTitle("Akkounttan Chiqish")
+                .setMessage("Akkounttan chiqganingizdan keyin, ilovadan foydalanish uchun qayta login va parollaringizni kiritishingiz kerak bo'ladi.")
+                .setPositiveButton("Davom etish"){dialog, which ->
+                    LocalPreferences().clearUserData()
+                    val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+                    val inflater = navHostFragment.navController.navInflater
+                    val graph = inflater.inflate(R.navigation.login_nav)
+                    navHostFragment.navController.graph = graph
+                }
+                .setNegativeButton("Bekor qilish"){dialog, which ->
+                    dialog.dismiss()
+                }.show()
+
+
         }
 
         return binding.root
