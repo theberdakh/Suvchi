@@ -15,7 +15,7 @@
   -->
 
 <resources>
-    <color name="chart_1_color_1">@color/color_primary_variant</color>
+    <color name="chart_1_color_1">@color/color_container</color>
 
     <style name="Chart1Line1Style">
         <item name="color">@color/chart_1_color_1</item>

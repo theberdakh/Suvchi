@@ -2,11 +2,15 @@
 <resources>
 
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">#805596FF</item>
+        <item name="android:color">@color/color_container</item>
     </style>
     
     <style name="RangeCalendarTheme" parent="ThemeOverlay.Material3.MaterialCalendar">
         <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="CircularPopUp" parent="Widget.AppCompat.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/shape_circular</item>
     </style>
 
     <style name="FullBottomSheetStyle" parent="Theme.Design.BottomSheetDialog">

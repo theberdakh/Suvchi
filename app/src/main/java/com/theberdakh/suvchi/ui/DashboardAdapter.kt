@@ -19,7 +19,7 @@ class DashboardAdapter(private val onDateClick: (View) -> Unit): ListAdapter<Ana
         fun bind(analytics: Analytics){
 
             // entriesOf(12f, 16f, 4f, 12f)
-            val twoLine = entryModelOf(entriesOf(4f, 12f, 8f, 16f))
+            val twoLine = entryModelOf(entriesOf(4f, 12f, 8f, 16f, 13, 14, 14, 14, 14, 21, 33, 40))
             binding.title.text = analytics.title
             binding.chartView.runInitialAnimation = true
             binding.chartView.setModel(twoLine)

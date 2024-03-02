@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.theberdakh.suvchi.R
 import com.theberdakh.suvchi.data.local.demo.AnalyticsDemo
@@ -95,11 +97,17 @@ class StatisticsFragment : Fragment() {
 
     private fun implementButtonDateRange() {
         binding.buttonDateRange.text = getLastDayRange(10)
+
+        val constrainBuilder  = CalendarConstraints.Builder()
+            .setValidator(DateValidatorPointBackward.now()).build()
+
         binding.buttonDateRange.setOnClickListener {
             val picker = MaterialDatePicker.Builder.dateRangePicker()
                 .setTheme(R.style.RangeCalendarTheme)
+                .setCalendarConstraints(constrainBuilder)
                 .setTitleText("Kúnler aralıǵın saylań")
                 .build()
+
 
             picker.show(this.childFragmentManager, "TAG")
 

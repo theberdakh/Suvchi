@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/color_icon</item>
         <item name="colorOnSurfaceVariant">@color/color_text_secondary</item>
         <item name="textInputOutlinedStyle">@style/RoundedTextInputLayout</item>
+        <item name="listPopupWindowStyle">@style/CircularPopUp</item>
     </style>
 
     <style name="Theme.Suvchi" parent="Base.Theme.Suvchi" />

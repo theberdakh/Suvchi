@@ -6,85 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_date_range"
-            style="?materialIconButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Yanvar, 2023"
-            android:textColor="@color/color_text_secondary"
-            app:icon="@drawable/round_edit_calendar_24"
-            app:iconGravity="end"
-            app:iconPadding="8dp"
-            app:iconTint="@color/color_text_secondary"
-            app:strokeWidth="0dp" />
-
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
-
-
-            <com.google.android.material.chip.ChipGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:nestedScrollingEnabled="true"
-                android:scrollbars="none"
-                app:singleLine="true"
-                android:visibility="gone"
-                app:singleSelection="true">
-
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textColor="@color/color_text_secondary"
-                    app:chipStrokeColor="@color/color_container" />
-
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2"
-                    android:textColor="@color/color_text_secondary"
-                    app:chipStrokeColor="@color/color_container" />
-
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3"
-                    android:textColor="@color/color_text_secondary"
-                    app:chipStrokeColor="@color/color_container" />
-
-                <com.google.android.material.chip.Chip
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4"
-                    android:textColor="@color/color_text_secondary"
-                    app:chipStrokeColor="@color/color_container" />
-
-            </com.google.android.material.chip.ChipGroup>
-
-        </HorizontalScrollView>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/shape_card_overview"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:paddingHorizontal="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,6 +22,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:padding="4dp">
 
                 <TextView
@@ -109,26 +36,30 @@
             </FrameLayout>
 
             <FrameLayout
-                android:visibility="gone"
-                android:layout_width="wrap_content"
+                android:visibility="visible"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_height="wrap_content"
-                android:padding="4dp">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/textview_date_range"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_date_range"
+                    style="?materialIconButtonOutlinedStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="1-10 kunlar"
-                    android:textAlignment="center"
-                    android:clickable="true"
-                    android:background="?android:selectableItemBackground"
-                    android:focusable="true"
-                    android:textAppearance="?textAppearanceTitleSmall"
-                    android:textColor="@color/color_text_primary"
-                    android:textStyle="bold"
-                    app:drawableEndCompat="@drawable/round_keyboard_arrow_down_24" />
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="Yanvar, 2023"
+                    android:paddingHorizontal="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="@color/color_text_secondary"
+                    app:icon="@drawable/round_edit_calendar_24"
+                    app:iconGravity="end"
+                    app:iconPadding="8dp"
+                    app:iconTint="@color/color_text_secondary"
+                    app:strokeWidth="0dp"/>
+
 
             </FrameLayout>
 
@@ -205,6 +136,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="4dp"
                 android:orientation="vertical">
 
                 <LinearLayout
