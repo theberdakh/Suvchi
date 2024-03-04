@@ -19,9 +19,10 @@ class BottomSheet: BottomSheetDialogFragment(){
         savedInstanceState: Bundle?
     ): View {
         _binding = DialogDeclineBinding.inflate(inflater, container, false)
-        setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.FullBottomSheetStyle)
+      //  setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.FullBottomSheetStyle)
 
-        binding.layoutWaterUsage.isVisible = false
+        binding.layoutWaterUsage.isVisible = true
+
 
         binding.titleWaterUsage.setOnClickListener {
             binding.layoutWaterUsage.isVisible = !binding.layoutWaterUsage.isVisible
@@ -29,6 +30,7 @@ class BottomSheet: BottomSheetDialogFragment(){
 
         return binding.root
     }
+    
 
 
     override fun onDestroyView() {
