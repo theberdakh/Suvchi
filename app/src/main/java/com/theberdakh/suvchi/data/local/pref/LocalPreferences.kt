@@ -17,8 +17,8 @@ class LocalPreferences {
 
     /*Auth*/
     private var isLoggedIn by BooleanPreference(pref, false)
-    private var accessToken by StringPreference(pref)
-    private var refreshToken by StringPreference(pref)
+     var accessToken by StringPreference(pref)
+     var refreshToken by StringPreference(pref)
 
     fun saveUserToken(loginResponse: LoginResponse) {
         accessToken = loginResponse.accessToken
@@ -81,9 +81,10 @@ class LocalPreferences {
     private var middleName by StringPreference(pref)
     private var phone by StringPreference(pref)
     private var avatar by StringPreference(pref)
-    private var username by StringPreference(pref)
+    var username by StringPreference(pref)
     private var latitude by StringPreference(pref)
     private var longitude by StringPreference(pref)
     private var passport by StringPreference(pref)
+    var password by StringPreference(pref)
 
 }

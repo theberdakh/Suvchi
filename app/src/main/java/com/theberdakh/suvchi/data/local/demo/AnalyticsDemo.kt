@@ -112,7 +112,7 @@ object AnalyticsDemo {
         ),
     )
 
-    fun getDemoResults() = listOf<Analytics>(
+    fun getDemoResults() = listOf(
         Analytics(
             id = 1,
             title = "Suv sarfi",
@@ -121,21 +121,6 @@ object AnalyticsDemo {
         Analytics(
             id = 1,
             title = "Suv tezligi",
-            values = entriesOf(12, 13, 14, 15)
-        ),
-        Analytics(
-            id = 1,
-            title = "Suvdan foydalanigan vaqtlar",
-            values = entriesOf(12, 13, 14, 15)
-        ),
-        Analytics(
-            id = 1,
-            title = "Suv olish davri",
-            values = entriesOf(12, 13, 14, 15)
-        ),
-        Analytics(
-            id = 1,
-            title = "Foydalanilgan suv ko'lami",
             values = entriesOf(12, 13, 14, 15)
         )
     )

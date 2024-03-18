@@ -63,6 +63,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6'
 
+    //Pagination
+    implementation "androidx.paging:paging-runtime:3.2.1"
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'

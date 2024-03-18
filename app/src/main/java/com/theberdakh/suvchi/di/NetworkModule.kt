@@ -3,6 +3,7 @@ package com.theberdakh.suvchi.di
 import com.theberdakh.suvchi.data.local.pref.LocalPreferences
 import com.theberdakh.suvchi.data.remote.LoginApi
 import com.theberdakh.suvchi.data.remote.UserApi
+import com.theberdakh.suvchi.util.TokenInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -21,13 +22,7 @@ val networkModule = module {
 
         val client = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .addInterceptor { chain: Interceptor.Chain ->
-                val newRequest = chain.request().newBuilder()
-                    .addHeader("Authorization", "Bearer ${LocalPreferences().getUserAccessToken()}")
-                    .build()
-
-                chain.proceed(newRequest)
-            }
+            .addInterceptor(TokenInterceptor())
             .build()
 
         return Retrofit.Builder()
