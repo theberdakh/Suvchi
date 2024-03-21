@@ -1,6 +1,5 @@
-package com.theberdakh.suvchi.ui
+package com.theberdakh.suvchi.ui.auth
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +15,13 @@ import com.theberdakh.suvchi.data.local.pref.LocalPreferences
 import com.theberdakh.suvchi.databinding.FragmentLoginBinding
 import com.theberdakh.suvchi.presentation.LoginViewModel
 import com.theberdakh.suvchi.presentation.UserViewModel
+import com.theberdakh.suvchi.util.getString
+import com.theberdakh.suvchi.util.getStringIsEmptyOrBlank
 import com.theberdakh.suvchi.util.hide
+import com.theberdakh.suvchi.util.shakeIfEmptyOrBlank
 import com.theberdakh.suvchi.util.show
-import com.theberdakh.suvchi.util.showSnackbar
 import com.theberdakh.suvchi.util.showToast
+import com.theberdakh.suvchi.util.vibratePhone
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -38,59 +40,49 @@ class LoginFragment : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
-        toggleVisibilityLoginButton()
+        initViews()
+        initListeners()
         initObservers()
 
-        binding.loginButton.hide()
-        binding.progressBar.hide()
+
+
+        return binding.root
+    }
+
+    private fun initListeners() {
+        binding.passwordEditText.doAfterTextChanged {
+            if (!binding.passwordEditText.getStringIsEmptyOrBlank()) {
+                binding.loginButton.show()
+            }
+        }
 
 
         binding.loginButton.setOnClickListener {
-            if (checkEditText(binding.passwordLayout, binding.passwordEditText) && checkEditText(
-                    binding.userNameLayout,
-                    binding.usernameEditText
-                )
-            ) {
+            val isUsernameValid = binding.usernameEditText.shakeIfEmptyOrBlank()
+            val isPasswordValid = binding.passwordEditText.shakeIfEmptyOrBlank()
+
+            if (isPasswordValid && isUsernameValid) {
                 lifecycleScope.launch {
                     viewModel.login(
                         binding.usernameEditText.text.toString(),
                         binding.passwordEditText.text.toString()
                     )
                 }
+            } else {
+                requireActivity().vibratePhone()
             }
         }
 
-        return binding.root
     }
 
-    private fun toggleVisibilityLoginButton() {
-        binding.passwordEditText.doAfterTextChanged {
-            if (!it.isNullOrEmpty() && it.isNotBlank()) {
-                binding.loginButton.show()
-            }
-        }
-    }
-
-    private fun checkEditText(
-        textInputLayout: TextInputLayout,
-        editText: TextInputEditText
-    ): Boolean {
-
-        editText.doAfterTextChanged {
-            textInputLayout.error = null
-        }
-
-        return if (editText.text.toString().isBlank() || editText.text.toString().isEmpty()) {
-            textInputLayout.error = null
-            textInputLayout.error = "Maydon bósh bólishi mumkin emas"
-            false
-        } else {
-            true
-        }
+    private fun initViews() {
+        binding.loginButton.hide()
     }
 
     private fun initObservers() {
         viewModel.responseIsSuccessful.onEach { loginResponse ->
+            LocalPreferences().username = binding.usernameEditText.text.toString()
+            LocalPreferences().password = binding.passwordEditText.text.toString()
             LocalPreferences().saveUserToken(loginResponse)
             userViewModel.getUserProfile()
             getUserProfileData()
@@ -108,13 +100,10 @@ class LoginFragment : Fragment() {
     private fun getUserProfileData() {
 
         userViewModel.userProfileResponseSuccessful.onEach { userResponse ->
-            showProgressDialog()
-           LocalPreferences().saveUserResponse(userResponse)
-            val navHostFragment =
-                requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            LocalPreferences().saveUserResponse(userResponse)
+            val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
             val inflater = navHostFragment.navController.navInflater
             val graph = inflater.inflate(R.navigation.parent_nav)
-
             navHostFragment.navController.graph = graph
 
         }.launchIn(lifecycleScope)
@@ -127,16 +116,6 @@ class LoginFragment : Fragment() {
             showToast(it.message.toString())
         }.launchIn(lifecycleScope)
 
-    }
-
-    override fun onStart() {
-        super.onStart()
-        binding.progressBar.hide()
-    }
-
-    private fun showProgressDialog() {
-        binding.loginButton.hide()
-        binding.progressBar.show()
     }
 
 

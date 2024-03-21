@@ -53,25 +53,22 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     private fun initObservers() {
         //Manual handling of refresh token when access token revokes
         lifecycleScope.launch {
             val response =  try {
                 RetrofitInstance.api.login(LoginRequest(LocalPreferences().username, LocalPreferences().password))
             } catch (e: IOException){
-                showToast("Internet baylanısıńızdı tekseriń")
+               // showToast("Internet baylanısıńızdı tekseriń")
                 Log.d(TAG, "IOException (check internet)")
                 return@launch
-            } catch (e: HttpException){
-                Log.d(TAG, "HttpException")
-                return@launch
             }
+
             if (response.isSuccessful && response.body() != null){
                 Log.d(TAG, "Refresh Token: ${response.body()!!.refreshToken}")
                 refreshTokens(response.body()!!)
             } else{
-                showToast("Maǵlıwmatlardı alıwıńız ushın qayta login isleń")
+               // showToast("Maǵlıwmatlardı alıwıńız ushın qayta login isleń")
             }
 
         }

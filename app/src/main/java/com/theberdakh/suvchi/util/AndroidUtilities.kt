@@ -7,11 +7,21 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.text.TextUtils
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 
+fun Activity.vibratePhone(milliSeconds: Long = 100) {
+    val vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+    if (Build.VERSION.SDK_INT >= 26) {
+        vibrator.vibrate(VibrationEffect.createOneShot(milliSeconds, VibrationEffect.DEFAULT_AMPLITUDE))
+    } else {
+        vibrator.vibrate(100)
+    }
+}
 fun downloadFile(activity: Activity, url: String, fileTitle: String) {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && // 1.
         ContextCompat.checkSelfPermission( // 2.

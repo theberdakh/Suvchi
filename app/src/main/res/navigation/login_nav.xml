@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.theberdakh.suvchi.ui.LoginFragment"
+        android:name="com.theberdakh.suvchi.ui.auth.LoginFragment"
         android:label="Login"/>
 
 </navigation>

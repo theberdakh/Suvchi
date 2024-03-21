@@ -30,6 +30,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
     val dataFlow = MutableSharedFlow<PagingData<AllContractsEntity>>()
 
 
+
     suspend fun getUserProfile() {
         repository.getUserProfile().onEach {
             when (it) {

@@ -9,6 +9,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.patrykandpatrick.vico.core.entry.entriesOf
 import com.patrykandpatrick.vico.core.entry.entryModelOf
+import com.patrykandpatrick.vico.core.extension.setFieldValue
 import com.theberdakh.suvchi.data.local.demo.Analytics
 import com.theberdakh.suvchi.databinding.ItemListDayChartBinding
 
@@ -21,11 +22,8 @@ class DashboardAdapter(private val onDateClick: (View) -> Unit): ListAdapter<Ana
             // entriesOf(12f, 16f, 4f, 12f)
             val twoLine = entryModelOf(entriesOf(4f, 12f, 8f, 16f, 13, 14, 14, 14, 14, 21, 33, 40))
             binding.title.text = analytics.title
-            binding.chartView.runInitialAnimation = true
             binding.chartView.setModel(twoLine)
-            binding.chartDate.setOnClickListener {
-                onDateClick.invoke(binding.chartDate)
-            }
+
 
 
 

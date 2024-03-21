@@ -4,4 +4,7 @@
     <string name="mtrl_picker_range_header_unselected"
         description="Placeholders for two dates separated by a dash representing a range [CHAR_LIMIT=60]">Sanadan – Sanagacha</string>
     <string name="text_water_speed">Suv sarfi tezligi (órtacha): 14 m3/soat \nSuv sarfi vaqt bóyicha</string>
+    <string name="water_usage">Suw sarpı</string>
+    <string name="hint_text_login">Login</string>
+    <string name="hint_text_password">Parol</string>
 </resources>
