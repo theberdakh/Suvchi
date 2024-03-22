@@ -1,4 +1,4 @@
-package com.theberdakh.suvchi.ui
+package com.theberdakh.suvchi.ui.day_usage
 
 import android.os.Bundle
 import android.view.LayoutInflater

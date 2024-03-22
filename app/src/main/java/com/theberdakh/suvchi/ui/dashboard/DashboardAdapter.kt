@@ -1,15 +1,12 @@
-package com.theberdakh.suvchi.ui
+package com.theberdakh.suvchi.ui.dashboard
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
 import com.patrykandpatrick.vico.core.entry.entriesOf
 import com.patrykandpatrick.vico.core.entry.entryModelOf
-import com.patrykandpatrick.vico.core.extension.setFieldValue
 import com.theberdakh.suvchi.data.local.demo.Analytics
 import com.theberdakh.suvchi.databinding.ItemListDayChartBinding
 

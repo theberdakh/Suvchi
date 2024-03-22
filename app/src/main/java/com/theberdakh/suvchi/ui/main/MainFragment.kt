@@ -1,13 +1,10 @@
-package com.theberdakh.suvchi.ui
+package com.theberdakh.suvchi.ui.main
 
-import android.net.http.HttpException
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresExtension
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.theberdakh.suvchi.R
@@ -17,17 +14,17 @@ import com.theberdakh.suvchi.data.remote.model.auth.LoginRequest
 import com.theberdakh.suvchi.data.remote.model.auth.LoginResponse
 import com.theberdakh.suvchi.databinding.FragmentMainBinding
 import com.theberdakh.suvchi.presentation.LoginViewModel
+import com.theberdakh.suvchi.ui.settings.SettingsFragment
+import com.theberdakh.suvchi.ui.water_usage.StatisticsFragment
 import com.theberdakh.suvchi.ui.contracts.MessageFragment
-import com.theberdakh.suvchi.util.addFragmentToBackStack
+import com.theberdakh.suvchi.ui.dashboard.DashboardFragment
 import com.theberdakh.suvchi.util.replaceFragment
-import com.theberdakh.suvchi.util.showToast
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.androidx.scope.fragmentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -60,7 +57,7 @@ class MainFragment : Fragment() {
 
             val fragment = when (menuItem.itemId) {
                 R.id.bottom_action_message -> MessageFragment()
-                R.id.bottom_action_dashboard -> OverviewFragment()
+                R.id.bottom_action_dashboard -> DashboardFragment()
                 R.id.bottom_action_statistics -> StatisticsFragment()
                 else -> SettingsFragment()
             }
@@ -75,7 +72,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initViews() {
-        replaceFragment(childFragmentManager, R.id.nested_fragment_container, OverviewFragment())
+        replaceFragment(childFragmentManager, R.id.nested_fragment_container, DashboardFragment())
     }
 
     private fun initObservers() {

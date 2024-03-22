@@ -1,4 +1,4 @@
-package com.theberdakh.suvchi.ui
+package com.theberdakh.suvchi.ui.water_usage
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

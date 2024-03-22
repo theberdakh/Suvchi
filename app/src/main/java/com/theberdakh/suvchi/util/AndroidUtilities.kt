@@ -10,10 +10,23 @@ import android.os.Environment
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.text.TextUtils
+import android.view.View
+import android.widget.PopupMenu
+import androidx.annotation.MenuRes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 
+fun Context.showPopUpMenu(@MenuRes id: Int, view: View) {
+    val popUp = PopupMenu(this, view)
+    val inflater = popUp.menuInflater
+    inflater.inflate(id, popUp.menu)
+    popUp.setOnMenuItemClickListener {
+        true
+    }
+    popUp.show()
+
+}
 fun Activity.vibratePhone(milliSeconds: Long = 100) {
     val vibrator = this.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
     if (Build.VERSION.SDK_INT >= 26) {

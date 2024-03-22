@@ -1,4 +1,4 @@
-package com.theberdakh.suvchi.ui
+package com.theberdakh.suvchi.ui.water_usage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,8 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.theberdakh.suvchi.R
 import com.theberdakh.suvchi.data.local.demo.AnalyticsDemo
 import com.theberdakh.suvchi.databinding.FragmentStatisticsBinding
+import com.theberdakh.suvchi.ui.day_usage.DayFragment
+import com.theberdakh.suvchi.ui.report_usage.BottomSheet
 import com.theberdakh.suvchi.util.addFragmentToBackStack
 import java.text.SimpleDateFormat
 import java.util.Calendar
