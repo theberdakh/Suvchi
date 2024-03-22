@@ -6,7 +6,7 @@
         android:title="Dashboard"/>
     <item
         android:id="@+id/bottom_action_statistics"
-        android:icon="@drawable/ic_paper_outlined"
+        android:icon="@drawable/round_file_24"
         android:title="Dashboard"/>
     <item
         android:id="@+id/bottom_action_message"
