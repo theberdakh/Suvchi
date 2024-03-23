@@ -8,19 +8,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.theberdakh.suvchi.data.remote.model.contract.AllContractsEntity
 import com.theberdakh.suvchi.databinding.ItemListContractBinding
 
-class ContractPagingAdapter(private val onContractClickListener: (AllContractsEntity) -> Unit) :
+class ContractPagingAdapter(val listener: ContractClickEvent) :
     PagingDataAdapter<AllContractsEntity, ContractPagingAdapter.ContractPagingViewHolder>(
         ContractDiffCallback()
     ) {
 
+    interface ContractClickEvent {
+        fun onClick(contract: AllContractsEntity)
+    }
 
-    class ContractPagingViewHolder(private val binding: ItemListContractBinding) :
+
+    inner class ContractPagingViewHolder(private val binding: ItemListContractBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(contract: AllContractsEntity?) {
-
-            binding.textviewFileTitle.text = contract?.title
-            binding.textviewFileSubtitle.text = contract?.file
-
+        fun bind(contract: AllContractsEntity) {
+            binding.textviewFileTitle.text = contract.title
+            binding.textviewFileSubtitle.text = contract.file
+            binding.root.setOnClickListener {
+                listener.onClick(contract)
+            }
 
         }
     }
@@ -44,7 +49,7 @@ class ContractPagingAdapter(private val onContractClickListener: (AllContractsEn
 
     override fun onBindViewHolder(holder: ContractPagingViewHolder, position: Int) {
         val contract = getItem(position)
-        holder.bind(contract)
+        holder.bind(contract!!)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContractPagingViewHolder {

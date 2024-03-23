@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.theberdakh.suvchi.data.remote.model.contract.AllContractsEntity
 import com.theberdakh.suvchi.databinding.FragmentMessageBinding
 import com.theberdakh.suvchi.presentation.UserViewModel
 import com.theberdakh.suvchi.util.downloadFile
@@ -18,10 +19,11 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MessageFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
+class MessageFragment : Fragment(), ContractPagingAdapter.ContractClickEvent {
     private var _binding: FragmentMessageBinding? = null
     private val binding get() = checkNotNull(_binding)
     private val userViewModel by viewModel<UserViewModel>()
+    private val contractAdapter = ContractPagingAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,44 +32,20 @@ class MessageFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     ): View {
         _binding = FragmentMessageBinding.inflate(inflater, container, false)
 
+
         initRecyclerView()
 
         initStatusObservers()
 
 
 
+
+        binding.recyclerViewContracts.adapter = contractAdapter
         lifecycleScope.launch {
-            userViewModel.getUserContracts()
-
+          userViewModel.contracts.collect{
+              contractAdapter.submitData(it)
+          }
         }
-        val adapter = ContractsListAdapter({ onAcceptClick ->
-            showToast("Aceepted click ${onAcceptClick.id}")
-            lifecycleScope.launch {
-                userViewModel.setUserContractPositive(onAcceptClick.id)
-                userViewModel.getUserContracts()
-            }
-        }, { onFileClick ->
-            showToast(onFileClick.fileId.toString())
-            downloadFile(requireActivity(), onFileClick.file, onFileClick.title)
-
-        })
-
-        adapter.setHasStableIds(true)
-
-        binding.recyclerViewContracts.adapter = adapter
-
-
-
-        userViewModel.allContractsResponseSuccess.onEach {
-            adapter.submitList(null)
-            if (it.data.size != adapter.currentList.size){
-                adapter.submitList(it.data)
-            }
-            Log.d("All count", it.count.toString())
-        }.launchIn(lifecycleScope)
-
-
-
 
 
         userViewModel.allContractsResponseMessage.onEach {
@@ -82,19 +60,15 @@ class MessageFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         return binding.root
     }
 
+    private fun acceptListener(id: Int) {
+        lifecycleScope.launch {
+            userViewModel.setUserContractPositive(id)
+            userViewModel.getUserContracts()
+        }
+    }
+
     private fun initStatusObservers() {
-        userViewModel.statusContractSuccess.onEach {
 
-            showToast(it.status)
-        }.launchIn(lifecycleScope)
-
-        userViewModel.statusContractMessage.onEach {
-            showToast(it)
-        }.launchIn(lifecycleScope)
-
-        userViewModel.statusContractError.onEach {
-            it.printStackTrace()
-        }.launchIn(lifecycleScope)
     }
 
     private fun initRecyclerView() {
@@ -107,8 +81,8 @@ class MessageFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         super.onDestroyView()
     }
 
-    override fun onRefresh() {
-
+    override fun onClick(contract: AllContractsEntity) {
+        downloadFile(requireActivity(), contract.file, "${contract.title}.${contract.file.subSequence(contract.file.length-3, contract.file.length)}")
     }
 
 

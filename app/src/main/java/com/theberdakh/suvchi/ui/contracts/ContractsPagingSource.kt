@@ -7,7 +7,7 @@ import com.theberdakh.suvchi.data.remote.UserApi
 import com.theberdakh.suvchi.data.remote.model.contract.AllContractsEntity
 
 class ContractsPagingSource (
-    val api: UserApi
+    private val api: UserApi
 ): PagingSource<Int, AllContractsEntity>(){
     override fun getRefreshKey(state: PagingState<Int, AllContractsEntity>): Int? {
         return state.anchorPosition?.let {

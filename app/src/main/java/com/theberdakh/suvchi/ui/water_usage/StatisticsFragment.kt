@@ -32,48 +32,29 @@ class StatisticsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStatisticsBinding.inflate(inflater, container, false)
-        implementButtonDateRange()
 
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.setItemViewCacheSize(10)
+        initViews()
 
-
-         adapter = DayAdapter(
-            { setAccepted() },
-            { setDeclined() },
-            {setCardClicked()}
-        )
-
-        binding.recyclerView.adapter = adapter
-        adapter.submitList(AnalyticsDemo.getDemoStatsForWeek())
 
 
 
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
+    private fun initViews() {
+        implementButtonDateRange()
 
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.setItemViewCacheSize(10)
+
+        adapter = DayAdapter(
+            { setAccepted() },
+            { setDeclined() },
+            {setCardClicked()}
+        )
+        binding.recyclerView.adapter = adapter
+        adapter.submitList(AnalyticsDemo.getDemoStatsForWeek())
     }
-
-    override fun onResume() {
-        super.onResume()
-
-
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
-        super.onViewCreated(view, savedInstanceState)
-
-
-
-
-    }
-
     private fun setCardClicked(){
         addFragmentToBackStack(
             requireActivity().supportFragmentManager,
@@ -83,12 +64,10 @@ class StatisticsFragment : Fragment() {
     }
     private fun setDeclined() {
         showDialog(R.layout.dialog_decline)
-        //show dialog
     }
 
     private fun showDialog(@LayoutRes id: Int) {
         val dialog = BottomSheet()
-
         dialog.show(childFragmentManager, "Tag")
 
     }
@@ -107,7 +86,7 @@ class StatisticsFragment : Fragment() {
             val picker = MaterialDatePicker.Builder.dateRangePicker()
                 .setTheme(R.style.RangeCalendarTheme)
                 .setCalendarConstraints(constrainBuilder)
-                .setTitleText("Kúnler aralıǵın saylań")
+                .setTitleText("Kúnler aralıǵıń saylań")
                 .build()
 
 
@@ -145,10 +124,6 @@ class StatisticsFragment : Fragment() {
         val year = calendar.get(Calendar.YEAR)
 
         return "$day/$month/$year"
-    }
-
-    private fun formatDateToLong(date: Date): Long {
-        return date.time
     }
 
     private fun convertTimeToDate(time: Long): String {

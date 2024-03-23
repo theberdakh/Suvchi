@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 
-class UserRepository(private val api: UserApi) {
+class UserRepository( val api: UserApi) {
     suspend fun getUserProfile() = flow {
         val response = api.getUserProfile()
         if (response.isSuccessful){

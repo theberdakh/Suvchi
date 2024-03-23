@@ -2,7 +2,10 @@ package com.theberdakh.suvchi.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.theberdakh.suvchi.data.remote.model.ResultData
 import com.theberdakh.suvchi.data.remote.model.contract.AllContractsEntity
 import com.theberdakh.suvchi.data.remote.model.contract.AllContractsResponse
@@ -10,6 +13,7 @@ import com.theberdakh.suvchi.data.remote.model.contract.ContractStatusBody
 import com.theberdakh.suvchi.data.remote.model.contract.ContractStatusResponse
 import com.theberdakh.suvchi.data.remote.model.user.UserResponse
 import com.theberdakh.suvchi.domain.UserRepository
+import com.theberdakh.suvchi.ui.contracts.ContractsPagingSource
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -29,6 +33,11 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
     val dataFlow = MutableSharedFlow<PagingData<AllContractsEntity>>()
 
+    val contracts = Pager(
+        PagingConfig(pageSize = 1)
+    ) {
+        ContractsPagingSource(repository.api)
+    }.flow.cachedIn(viewModelScope)
 
 
     suspend fun getUserProfile() {
