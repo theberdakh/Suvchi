@@ -67,7 +67,7 @@ class LocalPreferences {
         middleName = userResponse.middleName
         lastName = userResponse.lastName
         phone = userResponse.phone
-        avatar = userResponse.avatar
+        avatar = userResponse.avatar ?: ""
         username = userResponse.username
         latitude = userResponse.latitude
         longitude = userResponse.longitude
