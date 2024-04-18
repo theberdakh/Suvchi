@@ -3,6 +3,7 @@ package com.theberdakh.suvchi.domain
 import com.theberdakh.suvchi.data.remote.LoginApi
 import com.theberdakh.suvchi.data.remote.model.auth.LoginRequest
 import com.theberdakh.suvchi.data.remote.model.ResultData
+import com.theberdakh.suvchi.data.remote.utils.convertToMessage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -16,7 +17,7 @@ class AuthRepository(private val api: LoginApi) {
             emit(ResultData.Success(response.body()!!))
         }
         else {
-            emit(ResultData.Message(response.code().toString()))
+            emit(ResultData.Message(response.code().convertToMessage()))
         }
     }.catch {
         emit(ResultData.Error(it))

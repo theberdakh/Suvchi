@@ -8,6 +8,7 @@ import androidx.paging.cachedIn
 import com.theberdakh.suvchi.data.remote.UserApi
 import com.theberdakh.suvchi.data.remote.model.ResultData
 import com.theberdakh.suvchi.data.remote.model.contract.ContractStatusBody
+import com.theberdakh.suvchi.data.remote.utils.convertToMessage
 import com.theberdakh.suvchi.ui.contracts.ContractsPagingSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -21,7 +22,7 @@ class UserRepository( val api: UserApi) {
         if (response.isSuccessful){
             emit(ResultData.Success(response.body()!!))
         } else {
-            emit(ResultData.Message(response.code().toString()))
+            emit(ResultData.Message(response.code().convertToMessage()))
         }
     }.catch {
         emit(ResultData.Error(it))
@@ -34,7 +35,7 @@ class UserRepository( val api: UserApi) {
             ContractsPagingSource(api)
             emit(ResultData.Success(checkNotNull(response.body())))
         } else {
-            emit(ResultData.Message(response.code().toString()))
+            emit(ResultData.Message(response.code().convertToMessage()))
         }
     }.catch {
         emit(ResultData.Error(it))
@@ -45,7 +46,7 @@ class UserRepository( val api: UserApi) {
         if (response.isSuccessful){
             emit(ResultData.Success(checkNotNull(response.body())))
         } else {
-            emit(ResultData.Message(response.code().toString()))
+            emit(ResultData.Message(response.code().convertToMessage()))
         }
     }.catch {
         emit(ResultData.Error(it))
