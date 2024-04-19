@@ -21,7 +21,7 @@ class DayFragment: Fragment() {
     ): View {
        _binding =  FragmentDayBinding.inflate(inflater, container, false)
 
-        binding.iconNavigateBack.setOnClickListener {
+        binding.toolbarNavigationBack.setNavigationOnClickListener {
             parentFragmentManager.popBackStack()
         }
 

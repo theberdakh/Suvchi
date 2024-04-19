@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:padding="8dp"
+    android:layout_margin="16dp"
+    android:background="@drawable/shape_chart_card"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -12,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/water_usage"
-        android:textAppearance="?textAppearanceTitleLarge"
+        android:padding="8dp"
+        android:textAppearance="?textAppearanceTitleMedium"
         android:textColor="@color/color_text_primary" />
 
 
