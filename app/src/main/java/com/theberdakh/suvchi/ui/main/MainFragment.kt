@@ -12,6 +12,7 @@ import com.theberdakh.suvchi.data.local.pref.LocalPreferences
 import com.theberdakh.suvchi.data.remote.LoginApi
 import com.theberdakh.suvchi.data.remote.model.auth.LoginRequest
 import com.theberdakh.suvchi.data.remote.model.auth.LoginResponse
+import com.theberdakh.suvchi.data.remote.utils.isOnline
 import com.theberdakh.suvchi.databinding.FragmentMainBinding
 import com.theberdakh.suvchi.presentation.LoginViewModel
 import com.theberdakh.suvchi.ui.settings.SettingsFragment
@@ -19,6 +20,7 @@ import com.theberdakh.suvchi.ui.water_usage.StatisticsFragment
 import com.theberdakh.suvchi.ui.contracts.MessageFragment
 import com.theberdakh.suvchi.ui.dashboard.DashboardFragment
 import com.theberdakh.suvchi.util.replaceFragment
+import com.theberdakh.suvchi.util.showToast
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -30,7 +32,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-const val TAG = "MainFragment"
 
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
@@ -78,25 +79,28 @@ class MainFragment : Fragment() {
     private fun initObservers() {
         //Manual handling of refresh token when access token revokes
         lifecycleScope.launch {
-            val response = try {
-                RetrofitInstance.api.login(
-                    LoginRequest(
-                        LocalPreferences().username,
-                        LocalPreferences().password
+            if (requireContext().isOnline()){
+                val response = try {
+                    RetrofitInstance.api.login(
+                        LoginRequest(
+                            LocalPreferences().username,
+                            LocalPreferences().password
+                        )
                     )
-                )
-            } catch (e: IOException) {
-                // showToast("Internet baylanısıńızdı tekseriń")
-                Log.d(TAG, "IOException (check internet)")
-                return@launch
+                } catch (e: IOException) {
+                    showToast(getString(R.string.check_network_connection))
+                    return@launch
+                }
+
+                if (response.isSuccessful && response.body() != null) {
+                    refreshTokens(response.body()!!)
+                } else {
+                    showToast(getString(R.string.error_text_response_is_error_in_login))
+                }
+            } else {
+                showToast(getString(R.string.check_network_connection))
             }
 
-            if (response.isSuccessful && response.body() != null) {
-                Log.d(TAG, "Refresh Token: ${response.body()!!.refreshToken}")
-                refreshTokens(response.body()!!)
-            } else {
-                // showToast("Maǵlıwmatlardı alıwıńız ushın qayta login isleń")
-            }
 
         }
 
@@ -105,6 +109,14 @@ class MainFragment : Fragment() {
             LocalPreferences().accessToken = it.accessToken
             LocalPreferences().refreshToken = it.refreshToken
         }.launchIn(lifecycleScope)
+
+        viewModel.responseIsMessage.onEach {
+            showToast(it)
+        }
+
+        viewModel.responseIsError.onEach {
+            showToast(getString(R.string.error_text_response_is_error_in_login))
+        }
     }
 
     private fun refreshTokens(loginResponse: LoginResponse) {

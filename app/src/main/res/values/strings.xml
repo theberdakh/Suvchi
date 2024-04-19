@@ -7,4 +7,11 @@
     <string name="water_usage">Suw sarpı</string>
     <string name="hint_text_login">Login</string>
     <string name="hint_text_password">Parol</string>
+    <string name="check_network_connection">Internet baylanısın tekseriń.</string>
+    <string name="error_text_response_is_error_in_login">Autenfikatciyadaǵı mashqala</string>
+    <string name="log_out_account">Akkounttan Shıǵıw</string>
+    <string name="log_out_account_message">Akkounttan shıqqannan keyin, programmadan paydalanıw ushın qaytadan login hám parollaringizni kiritiwińız  kerek boladı.</string>
+    <string name="cancel">Biykarlaw</string>
+    <string name="profile_name">%1$s %2$s</string>
+    <string name="phone_number">+%1$s</string>
 </resources>

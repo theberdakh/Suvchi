@@ -12,6 +12,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.theberdakh.suvchi.R
 import com.theberdakh.suvchi.data.local.pref.LocalPreferences
+import com.theberdakh.suvchi.data.remote.utils.isOnline
 import com.theberdakh.suvchi.databinding.FragmentLoginBinding
 import com.theberdakh.suvchi.presentation.LoginViewModel
 import com.theberdakh.suvchi.presentation.UserViewModel
@@ -58,16 +59,22 @@ class LoginFragment : Fragment() {
 
 
         binding.loginButton.setOnClickListener {
+
             val isUsernameValid = binding.usernameEditText.shakeIfEmptyOrBlank()
             val isPasswordValid = binding.passwordEditText.shakeIfEmptyOrBlank()
 
             if (isPasswordValid && isUsernameValid) {
-                lifecycleScope.launch {
-                    viewModel.login(
-                        binding.usernameEditText.text.toString(),
-                        binding.passwordEditText.text.toString()
-                    )
+                if (requireContext().isOnline()){
+                    lifecycleScope.launch {
+                        viewModel.login(
+                            binding.usernameEditText.text.toString(),
+                            binding.passwordEditText.text.toString()
+                        )
+                    }
+                } else {
+                    showToast(getString(R.string.check_network_connection))
                 }
+
             } else {
                 requireActivity().vibratePhone()
             }

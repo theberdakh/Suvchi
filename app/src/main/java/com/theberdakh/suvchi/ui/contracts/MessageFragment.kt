@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.theberdakh.suvchi.R
 import com.theberdakh.suvchi.data.remote.model.contract.AllContractsEntity
+import com.theberdakh.suvchi.data.remote.utils.isOnline
 import com.theberdakh.suvchi.databinding.FragmentMessageBinding
 import com.theberdakh.suvchi.presentation.UserViewModel
 import com.theberdakh.suvchi.util.downloadFile
@@ -42,9 +44,14 @@ class MessageFragment : Fragment(), ContractPagingAdapter.ContractClickEvent {
 
         binding.recyclerViewContracts.adapter = contractAdapter
         lifecycleScope.launch {
-          userViewModel.contracts.collect{
-              contractAdapter.submitData(it)
-          }
+            if (requireContext().isOnline()){
+                userViewModel.contracts.collect{
+                    contractAdapter.submitData(it)
+                }
+            } else {
+                showToast(getString(R.string.check_network_connection))
+            }
+
         }
 
 

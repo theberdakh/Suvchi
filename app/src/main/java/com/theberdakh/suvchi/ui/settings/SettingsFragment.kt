@@ -38,24 +38,24 @@ class SettingsFragment: Fragment() {
         val lastName = LocalPreferences().getUserData().lastName
         val phone = LocalPreferences().getUserData().phone
 
-        binding.textviewProfileName.text = "$firstName $lastName"
-        binding.textviewProfileType.text = "+$phone"
+        binding.textviewProfileName.text = getString(R.string.profile_name, firstName, lastName)
+        binding.textviewProfileType.text = getString(R.string.phone_number, phone)
 
 
         binding.layoutLogOut.setOnClickListener {
 
             MaterialAlertDialogBuilder(requireContext())
                 .setBackground(AppCompatResources.getDrawable(requireContext(), R.drawable.shape_chart_card))
-                .setTitle("Akkounttan Chiqish")
-                .setMessage("Akkounttan chiqganingizdan keyin, ilovadan foydalanish uchun qayta login va parollaringizni kiritishingiz kerak bo'ladi.")
-                .setPositiveButton("Davom etish"){dialog, which ->
+                .setTitle(getString(R.string.log_out_account))
+                .setMessage(getString(R.string.log_out_account_message))
+                .setPositiveButton(R.string.log_out_account){ _, _ ->
                     LocalPreferences().clearUserData()
                     val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-                    val inflater = navHostFragment.navController.navInflater
-                    val graph = inflater.inflate(R.navigation.login_nav)
+                    val dialogInflater = navHostFragment.navController.navInflater
+                    val graph = dialogInflater.inflate(R.navigation.login_nav)
                     navHostFragment.navController.graph = graph
                 }
-                .setNegativeButton("Bekor qilish"){dialog, which ->
+                .setNegativeButton(getString(R.string.cancel)){ dialog, _ ->
                     dialog.dismiss()
                 }.show()
 
@@ -71,8 +71,8 @@ class SettingsFragment: Fragment() {
         }
 
         viewModel.userProfileResponseSuccessful.onEach {
-            binding.textviewProfileName.text = "${it.firstName} ${it.lastName}"
-            binding.textviewProfileType.text = it.phone
+            binding.textviewProfileName.text = getString(R.string.profile_name, it.firstName, it.lastName)
+            binding.textviewProfileType.text =  getString(R.string.phone_number, it.phone)
         }.launchIn(lifecycleScope)
 
         viewModel.userProfileResponseMessage.onEach {
