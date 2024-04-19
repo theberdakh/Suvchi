@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:elevation="4dp"
     android:background="@drawable/shape_chart_card"
-    android:layout_margin="8dp"
+    android:layout_margin="16dp"
     android:padding="8dp">
 
     <RelativeLayout
