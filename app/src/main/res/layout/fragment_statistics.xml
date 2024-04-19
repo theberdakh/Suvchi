@@ -202,19 +202,16 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_all"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/all"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_canceled"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/canceled"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_accepted"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/accepted"/>

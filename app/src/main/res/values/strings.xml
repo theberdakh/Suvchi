@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Suvchi</string>
+    <string name="app_name">Fermer</string>
     <!--Workaround for DateRangePicker-->
     <string name="mtrl_picker_range_header_unselected"
         description="Placeholders for two dates separated by a dash representing a range [CHAR_LIMIT=60]">Sanadan – Sanagacha</string>
