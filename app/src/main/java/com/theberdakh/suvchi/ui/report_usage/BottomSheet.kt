@@ -24,9 +24,7 @@ class BottomSheet: BottomSheetDialogFragment(){
         binding.layoutWaterUsage.isVisible = true
 
 
-        binding.titleWaterUsage.setOnClickListener {
-            binding.layoutWaterUsage.isVisible = !binding.layoutWaterUsage.isVisible
-        }
+
 
         return binding.root
     }

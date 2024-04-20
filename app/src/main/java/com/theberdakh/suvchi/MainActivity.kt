@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.theberdakh.suvchi.data.local.pref.LocalPreferences
+import com.theberdakh.suvchi.data.remote.utils.isOnline
 import com.theberdakh.suvchi.databinding.ActivityMainBinding
 import com.theberdakh.suvchi.util.checkHostResolution
 import com.theberdakh.suvchi.util.setOnlyLightMode
@@ -24,15 +25,20 @@ class MainActivity : AppCompatActivity() {
         val loginGraph = inflater.inflate(R.navigation.login_nav)
         val parenGraph = inflater.inflate(R.navigation.parent_nav)
 
+        navHostFragment.navController.graph = parenGraph
 
+/*
         lifecycleScope.launch {
-            if (checkHostResolution(this@MainActivity, "api.smartwaterdegree.uz")) {
-                navHostFragment.navController.graph =
-                    if (LocalPreferences().isUserLoggedIn()) parenGraph else loginGraph
-            } else {
-                navHostFragment.navController.graph = inflater.inflate(R.navigation.login_nav)
+            if (this@MainActivity.isOnline()){
+                if (checkHostResolution(this@MainActivity, "api.smartwaterdegree.uz")) {
+                    navHostFragment.navController.graph =
+                        if (LocalPreferences().isUserLoggedIn()) parenGraph else loginGraph
+                } else {
+                    navHostFragment.navController.graph = inflater.inflate(R.navigation.login_nav)
+                }
             }
-        }
+
+        }*/
 
     }
 }

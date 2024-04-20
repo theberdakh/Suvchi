@@ -15,61 +15,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:padding="4dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Umumiy"
-                    android:textAppearance="?textAppearanceTitleSmall"
-                    android:textColor="@color/color_text_primary"
-                    android:textStyle="bold" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:visibility="visible"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_date_range"
-                    style="?materialIconButtonOutlinedStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:text="Yanvar, 2023"
-                    android:paddingHorizontal="0dp"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp"
-                    android:textColor="@color/color_text_secondary"
-                    app:icon="@drawable/round_edit_calendar_24"
-                    app:iconGravity="end"
-                    app:iconPadding="8dp"
-                    app:iconTint="@color/color_text_secondary"
-                    app:strokeWidth="0dp"/>
-
-
-            </FrameLayout>
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:visibility="gone"
             android:orientation="horizontal"
             android:weightSum="2">
@@ -196,8 +141,11 @@
 
     </LinearLayout>
 
+
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
+        android:background="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -219,12 +167,26 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:id="@+id/button_date_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:strokeColor="?colorPrimary"
+        android:layout_gravity="end"
+        android:text="Kalendardan saylaw"
+        app:icon="@drawable/icon_calendar"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_list_day_card" />
+
+
 
 
 

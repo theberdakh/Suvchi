@@ -9,6 +9,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:background="?colorPrimary"/>
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_navigation_back"
         android:layout_width="match_parent"
@@ -22,6 +27,9 @@
 
 
     <LinearLayout
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:background="@drawable/shape_chart_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -54,7 +62,7 @@
                     android:text="Ulıwma sarıplanǵan suw"
                     android:textAppearance="?textAppearanceBodySmall"
                     android:textColor="@color/color_text_secondary"
-                    android:textStyle="bold" />
+                     />
 
             </LinearLayout>
 
@@ -78,7 +86,7 @@
                     android:text="Paydalanılǵan waqıt"
                     android:textAppearance="?textAppearanceBodySmall"
                     android:textColor="@color/color_text_secondary"
-                    android:textStyle="bold" />
+                />
 
             </LinearLayout>
 
@@ -113,7 +121,7 @@
                     android:text="Ortasha tezlik"
                     android:textAppearance="?textAppearanceBodySmall"
                     android:textColor="@color/color_text_secondary"
-                    android:textStyle="bold" />
+                 />
 
             </LinearLayout>
 

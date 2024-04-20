@@ -1,12 +1,16 @@
 package com.theberdakh.suvchi.ui.main
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.theberdakh.suvchi.R
 import com.theberdakh.suvchi.data.local.pref.LocalPreferences
 import com.theberdakh.suvchi.data.remote.LoginApi
@@ -19,7 +23,11 @@ import com.theberdakh.suvchi.ui.settings.SettingsFragment
 import com.theberdakh.suvchi.ui.water_usage.StatisticsFragment
 import com.theberdakh.suvchi.ui.contracts.MessageFragment
 import com.theberdakh.suvchi.ui.dashboard.DashboardFragment
+import com.theberdakh.suvchi.util.enterFullScreen
+import com.theberdakh.suvchi.util.exitFullScreen
+import com.theberdakh.suvchi.util.hide
 import com.theberdakh.suvchi.util.replaceFragment
+import com.theberdakh.suvchi.util.show
 import com.theberdakh.suvchi.util.showToast
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -50,8 +58,11 @@ class MainFragment : Fragment() {
         initObservers()
 
 
+
         return binding.root
     }
+
+
 
     private fun initListeners() {
         binding.bottomNavView.setOnItemSelectedListener { menuItem ->
@@ -73,7 +84,62 @@ class MainFragment : Fragment() {
     }
 
     private fun initViews() {
+        requireActivity().enterFullScreen()
         replaceFragment(childFragmentManager, R.id.nested_fragment_container, DashboardFragment())
+
+
+
+        binding.tabLayout.tabRippleColor = null
+        binding.tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val position = tab?.position
+
+                val fragment = when (position) {
+                    0 -> {
+                        binding.toolbar.show()
+                        binding.profileInfo.hide()
+                        binding.toolbar.setTitle(R.string.app_name)
+                        DashboardFragment()
+                    }
+                    1 -> {
+                        binding.toolbar.show()
+                        binding.profileInfo.hide()
+                        binding.toolbar.setTitle(R.string.daily_statistics)
+                        StatisticsFragment()
+                    }
+                    2 -> {
+                        binding.toolbar.show()
+                        binding.profileInfo.hide()
+                        binding.toolbar.setTitle(getString(R.string.messages))
+                        MessageFragment()
+                    }
+                    else -> {
+                        binding.toolbar.hide()
+                        binding.profileInfo.show()
+                        SettingsFragment()
+                    }
+                }
+
+                replaceFragment(
+                    childFragmentManager,
+                    R.id.nested_fragment_container,
+                    fragment = fragment
+                )
+
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                Log.d("TabLAyout", "Tab unselected")
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+
+        })
+
+
+
     }
 
     private fun initObservers() {
@@ -151,8 +217,10 @@ class MainFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onDestroyView() {
         _binding = null
+        requireActivity().exitFullScreen()
         super.onDestroyView()
     }
 }

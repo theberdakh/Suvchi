@@ -17,4 +17,9 @@
     <string name="all">Hámmesi</string>
     <string name="canceled">Bıykarlanǵan</string>
     <string name="accepted">Tastıyqlanǵan</string>
+    <string name="accept">Tastıyqlaw</string>
+    <string name="reason_to_cancel">Biykarlaw sebebi</string>
+    <string name="daily_statistics">Kúnlik statistika</string>
+    <string name="messages">Xabarlar</string>
+    <string name="empty_text" />
 </resources>

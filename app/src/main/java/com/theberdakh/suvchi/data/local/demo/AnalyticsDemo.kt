@@ -24,6 +24,16 @@ object AnalyticsDemo {
             totalTimeWaterConsumption = 3,
             totalValueWaterConsumption = 1,
             waterSpeedByHours = getDemoWaterSpeedForDay()
+        ),
+        DailyUsage(
+            id = 1,
+            date = 22,
+            isConfirmed = false,
+            startTimeWaterConsumption = 1,
+            endTimeWaterConsumption = 2,
+            totalTimeWaterConsumption = 3,
+            totalValueWaterConsumption = 1,
+            waterSpeedByHours = getDemoWaterSpeedForDay()
         )
     )
 

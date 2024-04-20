@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:padding="8dp"
-    android:layout_margin="16dp"
-    android:background="@drawable/shape_chart_card"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="16dp"
+    android:padding="8dp"
+    android:background="@drawable/shape_chart_card"
+    android:orientation="vertical"
+    android:elevation="8dp">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/water_usage"
         android:padding="8dp"
-        android:textAppearance="?textAppearanceTitleMedium"
-        android:textColor="@color/color_text_primary" />
-
+        android:textAppearance="?textAppearanceTitleMedium"/>
 
     <com.patrykandpatrick.vico.views.chart.ChartView
         android:id="@+id/chart_view"
@@ -31,7 +28,7 @@
         app:lineChartStyle="@style/Chart1LineLayerStyle"
         app:showBottomAxis="true"
         app:showStartAxis="true"
-        app:startAxisStyle="@style/Chart1StartAxisStyle" />
-
+        app:startAxisStyle="@style/Chart1StartAxisStyle"
+        />
 
 </LinearLayout>

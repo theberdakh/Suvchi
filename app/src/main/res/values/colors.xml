@@ -2,7 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="color_icon">#4285F4</color>
+    <color name="white_shade">#F4F4F4</color>
+    <color name="color_icon">#0980EC</color>
     <color name="color_container">#805596FF</color>
     <color name="color_text_primary">#125688</color>
     <color name="color_text_secondary">#125688</color>
@@ -11,4 +12,7 @@
     <color name="color_txt">#1F4C7F</color>
     <color name="background_card">#EBF1FD</color>
     <color name="color_primary_variant">#5596FF</color>
+    <color name="gray_unfocused">#979797</color>
+
+
 </resources>

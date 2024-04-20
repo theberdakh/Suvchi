@@ -15,6 +15,8 @@ import com.theberdakh.suvchi.databinding.FragmentStatisticsBinding
 import com.theberdakh.suvchi.ui.day_usage.DayFragment
 import com.theberdakh.suvchi.ui.report_usage.BottomSheet
 import com.theberdakh.suvchi.util.addFragmentToBackStack
+import com.theberdakh.suvchi.util.enterFullScreen
+import com.theberdakh.suvchi.util.showToast
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -36,8 +38,17 @@ class StatisticsFragment : Fragment() {
         initViews()
 
 
+        initListeners()
 
         return binding.root
+    }
+
+    private fun initListeners() {
+        requireActivity().supportFragmentManager.addOnBackStackChangedListener {
+            if (isVisible){
+                requireActivity().enterFullScreen()
+            }
+        }
     }
 
     private fun initViews() {

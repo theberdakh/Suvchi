@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Suvchi" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/color_icon</item>
-        <item name="colorOnSurfaceVariant">@color/color_text_secondary</item>
+        <item name="colorSurface">@color/white_shade</item>
+        <item name="colorOnSurfaceVariant">@color/color_icon</item>
         <item name="textInputOutlinedStyle">@style/RoundedTextInputLayout</item>
         <item name="materialAlertDialogTheme">@style/AlertDialogTheme</item>
         <item name="android:listPopupWindowStyle">@style/CircularPopUp</item>

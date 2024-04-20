@@ -9,7 +9,129 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:elevation="10dp"
         android:orientation="vertical"
+        android:background="@drawable/shape_chart_card">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Jıl dawamında ulıwma"
+                android:padding="8dp"
+                android:textColor="?colorPrimary"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="2024"
+                android:textColor="?colorPrimary"
+                android:gravity="end|center_vertical"
+                android:clickable="true"
+                android:background="?android:selectableItemBackground"
+                android:focusable="true"
+                android:textStyle="bold"
+                android:drawablePadding="8dp"
+                app:drawableEndCompat="@drawable/round_keyboard_arrow_down_24" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.9"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ulıwma sarıplanǵan"
+                    android:textSize="14sp"
+                    android:drawablePadding="8dp"
+                    app:drawableStartCompat="@drawable/icon_circle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="7040 m3"
+                    android:paddingStart="24dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="?colorPrimary"
+                    />
+
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ortasha tezlik"
+                    android:textSize="14sp"
+                    android:drawableTint="#2ABCA8"
+                    android:drawablePadding="8dp"
+                    app:drawableStartCompat="@drawable/icon_circle" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="7040 m3"
+                    android:paddingStart="24dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#2ABCA8"
+                    />
+            </LinearLayout>
+
+
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/chart"
+                android:layout_width="0dp"
+                android:layout_weight="1.1"
+                android:layout_height="match_parent"/>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_margin="16dp"
+        android:elevation="12dp"
+        android:background="@drawable/shape_chart_card"
         android:padding="8dp">
 
         <LinearLayout
@@ -27,7 +149,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Yil davomida umumiy"
+                    android:text="Jıl dawamında"
                     android:textAppearance="?textAppearanceTitleSmall"
                     android:textColor="@color/color_text_primary"
                     android:textStyle="bold" />
@@ -92,10 +214,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Ja'mi sarflangan"
+                        android:text="Ulıwma sarıplanǵan suw"
                         android:textAppearance="?textAppearanceBodySmall"
                         android:textColor="@color/color_text_secondary"
-                        android:textStyle="bold" />
+                        />
 
                 </LinearLayout>
 
@@ -116,10 +238,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="O'rtacha tezlik"
+                        android:text="Ortasha tezlik"
                         android:textAppearance="?textAppearanceBodySmall"
                         android:textColor="@color/color_text_secondary"
-                        android:textStyle="bold" />
+                        />
 
                 </LinearLayout>
 
@@ -151,10 +273,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Suvdan foydalanish"
+                        android:text="Ulıwma suwǵarıw waqtı"
                         android:textAppearance="?textAppearanceBodySmall"
                         android:textColor="@color/color_text_secondary"
-                        android:textStyle="bold" />
+                     />
 
                 </LinearLayout>
 
@@ -162,6 +284,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     android:layout_marginVertical="4dp">
 
                     <TextView

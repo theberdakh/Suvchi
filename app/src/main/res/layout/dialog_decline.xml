@@ -1,233 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
-    android:orientation="vertical"
-    android:padding="8dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="8dp">
+    android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/title_report"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Shikoyat bildirish"
-            android:textAppearance="?textAppearanceTitleLarge"
-            android:textColor="@color/color_txt"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/title_water_usage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="Suv sarfi"
+            android:textSize="18sp"
+            android:layout_margin="8dp"
+            android:padding="12dp"
+            android:textColor="@color/color_icon"
             android:textAlignment="textStart"
-            android:textAppearance="?textAppearanceTitleLarge"
-            android:textColor="@color/color_txt"
-            android:textStyle="bold"
-            app:drawableEndCompat="@drawable/ic_next_" />
+            android:text="Shaǵım etiw" />
 
-        <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="8dp" />
+
 
         <LinearLayout
             android:id="@+id/layout_water_usage"
             android:layout_width="match_parent"
+            android:background="@drawable/shape_chart_card"
+            android:elevation="4dp"
+            android:padding="8dp"
+            android:layout_margin="16dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+
+            <TextView
+                android:id="@+id/date"
+                android:padding="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:fontFamily="sans-serif-medium"
+                android:text="17.04.2024"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="Vaqt"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="6 soat"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="8dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:layout_marginBottom="8dp">
 
-                <TextView
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="Hajmi"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary" />
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                <TextView
-                    android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:padding="4dp"
+                        android:text="Waqıt"
+                        android:textColor="@color/gray_unfocused"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="14sp"
+                        android:padding="4dp"
+                        android:text="6 soat"
+                        android:textColor="@color/color_icon"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="198 m3"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="4dp"
+                        android:text="Muǵdarı"
+                        android:textColor="@color/gray_unfocused"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="14sp"
+                        android:padding="4dp"
+                        android:text="193 m3"
+                        android:textColor="@color/color_icon"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="4dp"
+                        android:text="Ortasha tezlik"
+                        android:textColor="@color/gray_unfocused"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="14sp"
+                        android:padding="4dp"
+                        android:text="17 m/s"
+                        android:textColor="@color/color_icon"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="4dp"
+                        android:text="Summa"
+                        android:textColor="@color/gray_unfocused"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="14sp"
+                        android:padding="4dp"
+                        android:text="212.000 suwm"
+                        android:textColor="@color/color_icon"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="O'rtacha tezlik"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="17 km/soat"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="Ja'mi suv olingan vaqt"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="9:00 - 20:00"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="Summa"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_weight="1"
-                    android:text="212,000 so'm"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:textColor="@color/color_text_secondary"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
 
         </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/title_water_usage_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="Shikoyat tavsifi"
-            android:textAlignment="textStart"
-            android:textAppearance="?textAppearanceTitleLarge"
-            android:textColor="@color/color_txt"
-            android:textStyle="bold" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Shikoyat matni"
             style="@style/RoundedTextInputLayout"
-            app:endIconMode="custom"
-            app:helperText="Shikoyat yuborishdan oldin yuqoridagi hisobatlarni yana bir bor ko'zdan kechiring. ">
+            app:endIconMode="none"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/white"
+            app:boxStrokeWidth="0.4dp"
+            app:counterEnabled="true"
+            android:background="@android:color/transparent"
+            app:counterMaxLength="2000">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:hint="Sebebi"
+                android:maxLength="2000" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
 
         <Button
+            android:layout_margin="16dp"
+            android:id="@+id/button_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            style="?materialButtonOutlinedStyle"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"/>
+
+        <Button
+            android:layout_margin="16dp"
             android:id="@+id/button_send"
-            android:layout_marginVertical="16dp"
-            android:layout_width="match_parent"
-            app:cornerRadius="12dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:minHeight="48dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:backgroundTint="@color/color_primary_variant"
-            android:layout_gravity="start"
             android:text="Yuborish"/>
-
 
     </LinearLayout>
 
 
-</FrameLayout>
+
+</LinearLayout>
