@@ -52,6 +52,7 @@ class MainFragment : Fragment() {
     ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
 
+
         initViews()
         initListeners()
         initObservers()
@@ -63,41 +64,20 @@ class MainFragment : Fragment() {
 
 
 
+
     private fun initListeners() {
-        binding.bottomNavView.setOnItemSelectedListener { menuItem ->
 
-            val fragment = when (menuItem.itemId) {
-                R.id.bottom_action_message -> MessageFragment()
-                R.id.bottom_action_dashboard -> DashboardFragment()
-                R.id.bottom_action_statistics -> StatisticsFragment()
-                else -> SettingsFragment()
-            }
-
-            replaceFragment(
-                childFragmentManager,
-                R.id.nested_fragment_container,
-                fragment = fragment
-            )
-            true
-        }
-    }
-
-    private fun initViews() {
-        requireActivity().enterFullScreen()
-        replaceFragment(childFragmentManager, R.id.nested_fragment_container, DashboardFragment())
-
-
-
-        binding.tabLayout.tabRippleColor = null
         binding.tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val position = tab?.position
 
                 val fragment = when (position) {
                     0 -> {
+                        val firstName = LocalPreferences().getUserData().firstName
+                        val lastName = LocalPreferences().getUserData().lastName
                         binding.toolbar.show()
                         binding.profileInfo.hide()
-                        binding.toolbar.setTitle(R.string.app_name)
+                        binding.toolbar.title =  getString(R.string.profile_name, firstName, lastName)
                         DashboardFragment()
                     }
                     1 -> {
@@ -115,6 +95,7 @@ class MainFragment : Fragment() {
                     else -> {
                         binding.toolbar.hide()
                         binding.profileInfo.show()
+                        implementProfileInfo()
                         SettingsFragment()
                     }
                 }
@@ -138,7 +119,32 @@ class MainFragment : Fragment() {
         })
 
 
+    }
 
+    private fun initViews() {
+        requireActivity().enterFullScreen()
+        replaceFragment(childFragmentManager, R.id.nested_fragment_container, DashboardFragment())
+        binding.tabLayout.tabRippleColor = null
+
+        val firstName = LocalPreferences().getUserData().firstName
+        val lastName = LocalPreferences().getUserData().lastName
+
+        binding.toolbar.title = "$firstName $lastName"
+        binding.profileInfo.hide()
+
+
+
+
+    }
+
+    private fun implementProfileInfo() {
+        val firstName = LocalPreferences().getUserData().firstName
+        val lastName = LocalPreferences().getUserData().lastName
+        val phone = LocalPreferences().getUserData().phone
+        val image = LocalPreferences().getUserData().avatar
+
+        binding.tvName.text = getString(R.string.profile_name, firstName, lastName)
+        binding.tvPhone.text = getString(R.string.phone_number, phone)
     }
 
     private fun initObservers() {
