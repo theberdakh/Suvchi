@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.datepicker.CalendarConstraints
@@ -16,12 +15,10 @@ import com.theberdakh.suvchi.data.remote.model.statistics.DayUsageStatistics
 import com.theberdakh.suvchi.databinding.FragmentStatisticsBinding
 import com.theberdakh.suvchi.presentation.UserViewModel
 import com.theberdakh.suvchi.ui.day_usage.DayFragment
-import com.theberdakh.suvchi.ui.report_usage.BottomSheet
 import com.theberdakh.suvchi.util.addFragmentToBackStack
 import com.theberdakh.suvchi.util.enterFullScreen
 import com.theberdakh.suvchi.util.hide
 import com.theberdakh.suvchi.util.show
-import com.theberdakh.suvchi.util.showToast
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -89,15 +86,6 @@ class StatisticsFragment : Fragment(), StatisticsPagingAdapter.StatisticsClickEv
         )
     }
 
-    private fun declineDayUsageStatistics() {
-        showDeclineDialog(R.layout.dialog_decline)
-    }
-
-    private fun showDeclineDialog(@LayoutRes id: Int) {
-        val dialog = BottomSheet()
-        dialog.show(childFragmentManager, "Tag")
-
-    }
 
     private fun setAccepted() {
         //show dialog

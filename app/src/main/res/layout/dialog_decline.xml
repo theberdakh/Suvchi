@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
 
@@ -37,7 +36,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="17.04.2024"
                 android:textSize="16sp" />
 
 
@@ -60,6 +58,7 @@
                     android:weightSum="2">
 
                     <TextView
+
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -69,12 +68,12 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_total_time"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textSize="14sp"
                         android:padding="4dp"
-                        android:text="6 soat"
                         android:textColor="@color/color_icon"
                         android:textStyle="bold" />
 
@@ -96,12 +95,12 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_usage"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textSize="14sp"
                         android:padding="4dp"
-                        android:text="193 m3"
                         android:textColor="@color/color_icon"
                         android:textStyle="bold" />
 
@@ -114,6 +113,7 @@
                     android:weightSum="2">
 
                     <TextView
+                        android:id="@+id/speed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -123,12 +123,12 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_speed"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textSize="14sp"
                         android:padding="4dp"
-                        android:text="17 m/s"
                         android:textColor="@color/color_icon"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -141,6 +141,7 @@
                     android:weightSum="2">
 
                     <TextView
+
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -150,12 +151,12 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_amount"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textSize="14sp"
                         android:padding="4dp"
-                        android:text="212.000 suwm"
                         android:textColor="@color/color_icon"
                         android:textStyle="bold" />
 
@@ -212,7 +213,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:backgroundTint="@color/color_primary_variant"
-            android:text="Yuborish"/>
+            android:text="Jiberiw"/>
 
     </LinearLayout>
 
