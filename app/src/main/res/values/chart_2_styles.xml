@@ -18,7 +18,7 @@
     <color name="chart_2_color_1">#ff5500</color>
 
     <style name="Chart2Column1Style">
-        <item name="color">@color/chart_2_color_1</item>
+        <item name="color">?colorPrimary</item>
         <item name="thickness">16dp</item>
     </style>
 

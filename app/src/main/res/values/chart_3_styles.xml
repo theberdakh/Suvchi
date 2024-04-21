@@ -50,32 +50,36 @@
     </style>
 
     <style name="Chart3Line1Style">
-        <item name="color">@color/chart_3_color_1</item>
+        <!--Sızıq reńı-->
+        <item name="color">?colorPrimary</item>
     </style>
 
     <style name="Chart3StartAxisTitleBackgroundStyle" parent="Chart3AxisTitleBackgroundStyle">
+        <!--Y tárep tekst artı-->
         <item name="color">@color/chart_3_color_1</item>
     </style>
 
     <style name="Chart3StartAxisTitleStyle" parent="Chart3AxisTitleStyle">
-        <item name="labelColor">@android:color/black</item>
+        <item name="labelColor">@color/white</item> <!--Y-tárep tekst reńi-->
         <item name="backgroundStyle">@style/Chart3StartAxisTitleBackgroundStyle</item>
         <item name="marginEnd">4dp</item>
     </style>
 
     <style name="Chart3BottomAxisStyle" parent="Chart3AxisStyle">
         <item name="titleStyle">@style/Chart3BottomAxisTitleStyle</item>
-        <item name="title">X tárep</item>
+        <item name="title">Aylar</item>
     </style>
 
     <style name="Chart3LineLayerStyle">
+        <item name="showGuideline">true</item>
         <item name="line1Spec">@style/Chart3Line1Style</item>
+        <item name="titleStyle">@style/Chart3StartAxisTitleStyle</item>
     </style>
 
     <style name="Chart3StartAxisStyle" parent="Chart3AxisStyle">
-        <item name="showGuideline">false</item>
-        <item name="verticalAxisHorizontalLabelPosition">inside</item>
+        <item name="showGuideline">true</item>
+        <item name="verticalAxisHorizontalLabelPosition">outside</item> <!--Y qatar mánisleri-->
         <item name="titleStyle">@style/Chart3StartAxisTitleStyle</item>
-        <item name="title">Y-tárep</item>
+        <item name="title">m3</item>
     </style>
 </resources>

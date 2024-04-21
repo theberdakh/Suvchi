@@ -20,15 +20,18 @@
         android:id="@+id/chart_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:chart="line"
-        app:chartHorizontalScrollingEnabled="true"
+        app:chart="column"
+        app:chartHorizontalScrollingEnabled="false"
         app:chartZoomEnabled="true"
+        app:columnChartStyle="@style/Chart4ColumnLayerStyle"
         app:fadingEdgeVisibilityInterpolator="androidx.interpolator.view.animation.FastOutSlowInInterpolator"
-        app:fadingEdgeWidth="32dp"
-        app:lineChartStyle="@style/Chart1LineLayerStyle"
+        android:layerType="software"
         app:showBottomAxis="true"
-        app:showStartAxis="true"
-        app:startAxisStyle="@style/Chart1StartAxisStyle"
+        app:showEndAxis="true"
+        app:lineChartStyle="@style/Chart1Line1Style"
+        app:bottomAxisStyle="@style/Chart3BottomAxisStyle"
+
         />
+
 
 </LinearLayout>

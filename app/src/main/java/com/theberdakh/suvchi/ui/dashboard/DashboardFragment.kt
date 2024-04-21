@@ -139,6 +139,11 @@ class DashboardFragment : Fragment() {
         data.setValueTextColor(Color.WHITE)
         binding.chart.setData(data)
 
+
+
+
+
+
     }
 
     private fun initListeners() {
