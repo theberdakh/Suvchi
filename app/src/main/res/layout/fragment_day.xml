@@ -9,21 +9,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:background="?colorPrimary"/>
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar_navigation_back"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:navigationIconTint="?colorSurface"
-        android:background="?colorPrimaryDark"
-        app:title="17-fevral, 2024"
-        app:titleTextAppearance="?textAppearanceTitleLarge"
-        app:titleTextColor="?colorSurface"
-        app:navigationIcon="@drawable/round_keyboard_backspace_24" />
+        android:paddingTop="16dp"
+        android:background="@drawable/header_rectangle_collapsed"
+        android:paddingHorizontal="8dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_navigation_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIconTint="?colorSurface"
+            app:title="Artqa"
+            app:titleTextColor="?colorSurface"
+            app:navigationIcon="@drawable/round_keyboard_backspace_24" />
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
 
 
     <LinearLayout

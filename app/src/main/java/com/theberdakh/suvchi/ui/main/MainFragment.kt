@@ -76,6 +76,7 @@ class MainFragment : Fragment() {
                         val firstName = LocalPreferences().getUserData().firstName
                         val lastName = LocalPreferences().getUserData().lastName
                         binding.toolbar.show()
+                        binding.appBarLayout.setBackgroundResource(R.drawable.header_rectangle)
                         binding.profileInfo.hide()
                         binding.toolbar.title =  getString(R.string.profile_name, firstName, lastName)
                         DashboardFragment()
@@ -83,16 +84,19 @@ class MainFragment : Fragment() {
                     1 -> {
                         binding.toolbar.show()
                         binding.profileInfo.hide()
+                        binding.appBarLayout.setBackgroundResource(R.drawable.header_rectangle_collapsed)
                         binding.toolbar.setTitle(R.string.daily_statistics)
                         StatisticsFragment()
                     }
                     2 -> {
                         binding.toolbar.show()
                         binding.profileInfo.hide()
+                        binding.appBarLayout.setBackgroundResource(R.drawable.header_rectangle_collapsed)
                         binding.toolbar.setTitle(getString(R.string.messages))
                         MessageFragment()
                     }
                     else -> {
+                        binding.appBarLayout.setBackgroundResource(R.drawable.header_rectangle)
                         binding.toolbar.hide()
                         binding.profileInfo.show()
                         implementProfileInfo()
@@ -129,6 +133,7 @@ class MainFragment : Fragment() {
         val firstName = LocalPreferences().getUserData().firstName
         val lastName = LocalPreferences().getUserData().lastName
 
+        binding.appBarLayout.setBackgroundResource(R.drawable.header_rectangle)
         binding.toolbar.title = "$firstName $lastName"
         binding.profileInfo.hide()
 
