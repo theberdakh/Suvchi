@@ -2,9 +2,13 @@ package com.theberdakh.suvchi.ui.day_usage
 
 import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TableLayout
+import android.widget.TableRow
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -36,14 +40,14 @@ class DayFragment(dayUsageStatistics: DayUsageStatistics): Fragment() {
 
         val adapter= WaterSpeedAdapter()
         binding.recyclerHours.adapter = adapter
-        binding.recyclerHours.addItemDecoration(DividerItemDecoration(binding.recyclerHours.context, LinearLayoutManager.VERTICAL))
         adapter.submitList(AnalyticsDemo.getDemoWaterSpeedForDay())
 
         return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun initViews() {
+
+
 
     }
 

@@ -8,35 +8,35 @@ object AnalyticsDemo {
      fun getDemoWaterSpeedForDay() = listOf<WaterSpeed>(
         WaterSpeed(
             time = "11:00",
-            speed = "14 km/soat"
+            speed = "14"
         ),
         WaterSpeed(
             time = "12:00",
-            speed = "14 km/soat"
+            speed = "14"
         ),
         WaterSpeed(
             time = "13:00",
-            speed = "14 km/soat"
+            speed = "14"
         ),
         WaterSpeed(
             time = "14:00",
-            speed = "14 km/soat"
+            speed = "14"
         ),
         WaterSpeed(
             time = "15:00",
-            speed = "14 km/soat"
+            speed = "14 "
         ),
         WaterSpeed(
             time = "16:00",
-            speed = "14 km/soat"
+            speed = "14"
         ),
         WaterSpeed(
             time = "17:00",
-            speed = "14 km/soat"
+            speed = "14"
         ),
         WaterSpeed(
             time = "18:00",
-            speed = "14 km/soat"
+            speed = "14"
         ),
     )
 
