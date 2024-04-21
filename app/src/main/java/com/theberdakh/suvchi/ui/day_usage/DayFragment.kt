@@ -10,11 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.theberdakh.suvchi.data.local.demo.AnalyticsDemo
+import com.theberdakh.suvchi.data.remote.model.statistics.DayUsageStatistics
 import com.theberdakh.suvchi.databinding.FragmentDayBinding
 import com.theberdakh.suvchi.util.enterFullScreen
 import com.theberdakh.suvchi.util.exitFullScreen
 
-class DayFragment: Fragment() {
+class DayFragment(dayUsageStatistics: DayUsageStatistics): Fragment() {
     private var _binding: FragmentDayBinding? = null
     private val binding get() = checkNotNull(_binding)
 
@@ -36,7 +37,7 @@ class DayFragment: Fragment() {
         val adapter= WaterSpeedAdapter()
         binding.recyclerHours.adapter = adapter
         binding.recyclerHours.addItemDecoration(DividerItemDecoration(binding.recyclerHours.context, LinearLayoutManager.VERTICAL))
-        adapter.submitList(AnalyticsDemo.getDemoStatsForWeek()[0].waterSpeedByHours)
+        adapter.submitList(AnalyticsDemo.getDemoWaterSpeedForDay())
 
         return binding.root
     }

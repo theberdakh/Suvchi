@@ -7,16 +7,22 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.theberdakh.suvchi.data.remote.model.ResultData
-import com.theberdakh.suvchi.data.remote.model.contract.AllContractsEntity
 import com.theberdakh.suvchi.data.remote.model.contract.AllContractsResponse
 import com.theberdakh.suvchi.data.remote.model.contract.ContractStatusBody
 import com.theberdakh.suvchi.data.remote.model.contract.ContractStatusResponse
+import com.theberdakh.suvchi.data.remote.model.statistics.DayUsageStatistics
 import com.theberdakh.suvchi.data.remote.model.user.UserResponse
 import com.theberdakh.suvchi.domain.UserRepository
 import com.theberdakh.suvchi.ui.contracts.ContractsPagingSource
+import com.theberdakh.suvchi.ui.statistics.StatisticsPagingSource
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
 class UserViewModel(private val repository: UserRepository) : ViewModel() {
     val userProfileResponseSuccessful = MutableSharedFlow<UserResponse>()
@@ -31,13 +37,14 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
     val statusContractMessage = MutableSharedFlow<String>()
     val statusContractError = MutableSharedFlow<Throwable>()
 
-    val dataFlow = MutableSharedFlow<PagingData<AllContractsEntity>>()
 
     val contracts = Pager(
         PagingConfig(pageSize = 1)
     ) {
         ContractsPagingSource(repository.api)
     }.flow.cachedIn(viewModelScope)
+
+
 
 
     suspend fun getUserProfile() {
@@ -84,5 +91,19 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
         }.launchIn(viewModelScope)
     }
 
-
+    private val _periodStatisticsFlow = MutableStateFlow<PagingData<DayUsageStatistics>?>(null)
+    val periodStatistics: StateFlow<PagingData<DayUsageStatistics>?> = _periodStatisticsFlow.asStateFlow()
+    fun getPeriodStatistics(fromDate: String, toDate: String) {
+        val newPager = Pager(
+            config = PagingConfig(pageSize = 20),
+            pagingSourceFactory = { StatisticsPagingSource(repository.api, fromDate, toDate) }
+        )
+        viewModelScope.launch {
+            newPager.flow.cachedIn(viewModelScope).collectLatest {
+                _periodStatisticsFlow.value = it
+            }
+        }
+    }
 }
+
+

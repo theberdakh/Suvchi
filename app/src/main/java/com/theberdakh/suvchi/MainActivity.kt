@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         navHostFragment.navController.graph = parenGraph
 
-/*
         lifecycleScope.launch {
             if (this@MainActivity.isOnline()){
                 if (checkHostResolution(this@MainActivity, "api.smartwaterdegree.uz")) {
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        }*/
+        }
 
     }
 }

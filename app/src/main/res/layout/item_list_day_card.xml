@@ -40,15 +40,17 @@
             android:weightSum="2">
 
             <TextView
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="4dp"
-                android:text="Waqıt"
+                android:text="Waqıt (minut)"
                 android:textColor="@color/gray_unfocused"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_total_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -66,15 +68,17 @@
             android:weightSum="2">
 
             <TextView
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="4dp"
-                android:text="Muǵdarı"
+                android:text="Muǵdarı (m3)"
                 android:textColor="@color/gray_unfocused"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_q"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -93,15 +97,17 @@
             android:weightSum="2">
 
             <TextView
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="4dp"
-                android:text="Ortasha tezlik"
+                android:text="Ortasha tezlik (m/s)"
                 android:textColor="@color/gray_unfocused"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_v"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -120,15 +126,17 @@
             android:weightSum="2">
 
             <TextView
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="4dp"
-                android:text="Summa"
+                android:text="Summa (suwm)"
                 android:textColor="@color/gray_unfocused"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_amount"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -147,6 +155,7 @@
     <LinearLayout
         android:id="@+id/layout_accept_decline"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="4dp">

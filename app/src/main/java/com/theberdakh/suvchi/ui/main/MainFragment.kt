@@ -10,7 +10,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.theberdakh.suvchi.R
 import com.theberdakh.suvchi.data.local.pref.LocalPreferences
 import com.theberdakh.suvchi.data.remote.LoginApi
@@ -20,7 +19,7 @@ import com.theberdakh.suvchi.data.remote.utils.isOnline
 import com.theberdakh.suvchi.databinding.FragmentMainBinding
 import com.theberdakh.suvchi.presentation.LoginViewModel
 import com.theberdakh.suvchi.ui.settings.SettingsFragment
-import com.theberdakh.suvchi.ui.water_usage.StatisticsFragment
+import com.theberdakh.suvchi.ui.statistics.StatisticsFragment
 import com.theberdakh.suvchi.ui.contracts.MessageFragment
 import com.theberdakh.suvchi.ui.dashboard.DashboardFragment
 import com.theberdakh.suvchi.util.enterFullScreen

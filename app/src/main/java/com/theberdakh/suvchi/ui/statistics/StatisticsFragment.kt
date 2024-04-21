@@ -1,33 +1,41 @@
-package com.theberdakh.suvchi.ui.water_usage
+package com.theberdakh.suvchi.ui.statistics
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.theberdakh.suvchi.R
-import com.theberdakh.suvchi.data.local.demo.AnalyticsDemo
+import com.theberdakh.suvchi.data.remote.model.statistics.DayUsageStatistics
 import com.theberdakh.suvchi.databinding.FragmentStatisticsBinding
+import com.theberdakh.suvchi.presentation.UserViewModel
 import com.theberdakh.suvchi.ui.day_usage.DayFragment
 import com.theberdakh.suvchi.ui.report_usage.BottomSheet
 import com.theberdakh.suvchi.util.addFragmentToBackStack
 import com.theberdakh.suvchi.util.enterFullScreen
+import com.theberdakh.suvchi.util.hide
+import com.theberdakh.suvchi.util.show
 import com.theberdakh.suvchi.util.showToast
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 
-class StatisticsFragment : Fragment() {
+class StatisticsFragment : Fragment(), StatisticsPagingAdapter.StatisticsClickEvent {
     private var _binding: FragmentStatisticsBinding? = null
     private val binding get() = checkNotNull(_binding)
-    private lateinit var adapter: DayAdapter
-
+    private val adapter = StatisticsPagingAdapter(this)
+    private val userViewModel by viewModel<UserViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,16 +44,33 @@ class StatisticsFragment : Fragment() {
         _binding = FragmentStatisticsBinding.inflate(inflater, container, false)
 
         initViews()
-
-
         initListeners()
+        initObservers()
 
         return binding.root
     }
 
+    private fun initObservers() {
+        lifecycleScope.launch {
+            val (fromDate, toDate) = getLastDayRange(10)
+            binding.buttonDateRange.text = "2024-04-19 - 2024-04-21"
+            userViewModel.getPeriodStatistics("2024-04-19", "2024-04-21")
+            userViewModel.periodStatistics.collectLatest {
+                if (it != null) {
+                    binding.progressBar.hide()
+                    adapter.submitData(it)
+                } else {
+                    binding.progressBar.show()
+                }
+            }
+        }
+
+
+    }
+
     private fun initListeners() {
         requireActivity().supportFragmentManager.addOnBackStackChangedListener {
-            if (isVisible){
+            if (isVisible) {
                 requireActivity().enterFullScreen()
             }
         }
@@ -53,30 +78,22 @@ class StatisticsFragment : Fragment() {
 
     private fun initViews() {
         implementButtonDateRange()
-
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.setItemViewCacheSize(10)
-
-        adapter = DayAdapter(
-            { setAccepted() },
-            { setDeclined() },
-            {setCardClicked()}
-        )
         binding.recyclerView.adapter = adapter
-        adapter.submitList(AnalyticsDemo.getDemoStatsForWeek())
     }
-    private fun setCardClicked(){
+
+    private fun navigateToDayFragment(dayUsageStatistics: DayUsageStatistics) {
         addFragmentToBackStack(
             requireActivity().supportFragmentManager,
             R.id.fragmentContainerView,
-            DayFragment()
+            DayFragment(dayUsageStatistics)
         )
     }
-    private fun setDeclined() {
-        showDialog(R.layout.dialog_decline)
+
+    private fun declineDayUsageStatistics() {
+        showDeclineDialog(R.layout.dialog_decline)
     }
 
-    private fun showDialog(@LayoutRes id: Int) {
+    private fun showDeclineDialog(@LayoutRes id: Int) {
         val dialog = BottomSheet()
         dialog.show(childFragmentManager, "Tag")
 
@@ -87,9 +104,9 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun implementButtonDateRange() {
-        binding.buttonDateRange.text = getLastDayRange(10)
 
-        val constrainBuilder  = CalendarConstraints.Builder()
+
+        val constrainBuilder = CalendarConstraints.Builder()
             .setValidator(DateValidatorPointBackward.now()).build()
 
         binding.buttonDateRange.setOnClickListener {
@@ -103,8 +120,18 @@ class StatisticsFragment : Fragment() {
             picker.show(this.childFragmentManager, "TAG")
 
             picker.addOnPositiveButtonClickListener {
+                val fromDate = convertTimeToDate(it.first)
+                val toDate = convertTimeToDate(it.second)
+
                 binding.buttonDateRange.text =
-                    "${convertTimeToDate(it.first)} -${convertTimeToDate(it.second)}"
+                    "$fromDate - $toDate"
+                lifecycleScope.launch {
+                    Log.d("StatisticsFragment", "$fromDate - $toDate" )
+                    userViewModel.getPeriodStatistics(
+                        convertTimeToDate(it.first),
+                        convertTimeToDate(it.second)
+                    )
+                }
             }
 
             picker.addOnNegativeButtonClickListener {
@@ -114,7 +141,7 @@ class StatisticsFragment : Fragment() {
 
     }
 
-    private fun getLastDayRange(lastDays: Int): String {
+    private fun getLastDayRange(lastDays: Int): Pair<String, String> {
         val calendar = Calendar.getInstance()
         val currentDate = Date()
         calendar.time = currentDate
@@ -122,7 +149,7 @@ class StatisticsFragment : Fragment() {
         tenDaysAgo.time = currentDate
         tenDaysAgo.add(Calendar.DAY_OF_MONTH, lastDays)
 
-        return "${formatDateToText(tenDaysAgo.time)} - ${formatDateToText(currentDate)}"
+        return Pair(formatDateToText(tenDaysAgo.time), formatDateToText(currentDate))
     }
 
 
@@ -133,18 +160,22 @@ class StatisticsFragment : Fragment() {
         val month = calendar.get(Calendar.MONTH) + 1
         val year = calendar.get(Calendar.YEAR)
 
-        return "$day/$month/$year"
+        return "$year-$month-$day"
     }
 
     private fun convertTimeToDate(time: Long): String {
         val utc = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         utc.timeInMillis = time
-        val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return format.format(utc.time)
     }
 
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+
+    override fun onClick(dayUsageStatistics: DayUsageStatistics) {
+        navigateToDayFragment(dayUsageStatistics)
     }
 }

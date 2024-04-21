@@ -3,6 +3,7 @@ package com.theberdakh.suvchi.data.remote
 import com.theberdakh.suvchi.data.remote.model.contract.AllContractsResponse
 import com.theberdakh.suvchi.data.remote.model.contract.ContractStatusBody
 import com.theberdakh.suvchi.data.remote.model.contract.ContractStatusResponse
+import com.theberdakh.suvchi.data.remote.model.statistics.DayUsageStatistics
 import com.theberdakh.suvchi.data.remote.model.user.UserResponse
 import retrofit2.Response
 import retrofit2.http.Body
@@ -21,6 +22,12 @@ interface UserApi {
         @Query("skip") skip: Int,
         @Query("sort[id]") id: String = "DESC"
     ): Response<AllContractsResponse>
+
+    @GET("/consumption/statistic")
+    suspend fun getConsumptionStatistics(
+        @Query("from") fromDate: String,
+        @Query("to") toDate: String
+    ): Response<List<DayUsageStatistics>>
 
 
     @POST("/user/contracts/status")

@@ -9,3 +9,10 @@ fun convertDateTime(time: String, currentPattern: String = "yyyy-MM-dd'T'HH:mm:s
     val outputFormat = SimpleDateFormat(newPattern, Locale.getDefault())
     return outputFormat.format(parsedDate)
 }
+
+fun convertSecondToHourAndMinutes(seconds: Double): Pair<Int, Int> {
+
+        val hours = (seconds / 3600).toInt()
+        val minutes = ((seconds % 3600) / 60).toInt()
+        return Pair(hours, minutes)
+}

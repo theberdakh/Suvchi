@@ -169,15 +169,23 @@
 
     <com.google.android.material.button.MaterialButton
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginHorizontal="8dp"
         android:id="@+id/button_date_range"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:strokeColor="?colorPrimary"
         android:layout_gravity="end"
         android:text="Kalendardan saylaw"
+        app:iconGravity="textEnd"
         app:icon="@drawable/icon_calendar"
         />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center_horizontal"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
