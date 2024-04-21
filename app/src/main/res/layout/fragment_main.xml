@@ -9,15 +9,15 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/header_rectangle"
-        android:padding="8dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:paddingTop="14dp"
+        android:background="@drawable/header_rectangle">
 
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingVertical="20dp"
             android:backgroundTint="@android:color/transparent"
             app:title="@string/app_name"
             app:titleTextAppearance="?textAppearanceSearchResultTitle"

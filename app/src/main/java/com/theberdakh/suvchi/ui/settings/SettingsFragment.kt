@@ -34,12 +34,6 @@ class SettingsFragment: Fragment() {
 
         initObservers()
 
-        val firstName = LocalPreferences().getUserData().firstName
-        val lastName = LocalPreferences().getUserData().lastName
-        val phone = LocalPreferences().getUserData().phone
-
-        binding.textviewProfileName.text = getString(R.string.profile_name, firstName, lastName)
-        binding.textviewProfileType.text = getString(R.string.phone_number, phone)
 
 
         binding.layoutLogOut.setOnClickListener {
@@ -70,10 +64,6 @@ class SettingsFragment: Fragment() {
           //  viewModel.getUserProfile()
         }
 
-        viewModel.userProfileResponseSuccessful.onEach {
-            binding.textviewProfileName.text = getString(R.string.profile_name, it.firstName, it.lastName)
-            binding.textviewProfileType.text =  getString(R.string.phone_number, it.phone)
-        }.launchIn(lifecycleScope)
 
         viewModel.userProfileResponseMessage.onEach {
             showToast(it)

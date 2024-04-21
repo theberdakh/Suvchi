@@ -9,87 +9,13 @@
     android:orientation="vertical">
 
 
-        <LinearLayout
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/shape_shadow"
-            android:backgroundTint="@color/background_card"
-            android:layout_margin="8dp"
-            android:orientation="horizontal">
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="8dp">
-
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    app:shapeAppearanceOverlay="?shapeAppearanceCornerLarge"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/logo" />
-
-
-            </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:id="@+id/textview_profile_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Palenshe  Tolenshiev"
-                    android:textColor="@color/color_txt"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    />
-
-
-                <TextView
-                    android:id="@+id/textview_profile_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fermer"
-                    android:textColor="@color/color_txt"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-
-
-
-    <FrameLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/background_card"
-        android:padding="12dp"
-        android:layout_margin="8dp"
-        android:background="@drawable/shape_shadow">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Akkaunt Sozlamalari"
-            android:textColor="@color/color_txt"
-            android:textSize="18sp"
-            app:drawableEndCompat="@drawable/ic_next_" />
-
-
-
-    </FrameLayout>
+        android:text="Sazlawlar"
+        android:textAppearance="?textAppearanceTitleMedium"
+        android:textColor="?colorPrimary"
+        android:padding="8dp"/>
 
 
     <FrameLayout
@@ -133,7 +59,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Dark Mode "
+                    android:text="Túngi rejim"
                     android:textColor="@color/color_txt"
                     android:textSize="18sp" />
 
@@ -160,7 +86,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Notification"
+                    android:text="Bildirtpeler"
                     android:textColor="@color/color_txt"
                     android:textSize="18sp" />
 
@@ -198,7 +124,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Akkaunt Sozlamalari"
+                android:text="Biz tuwralı"
                 android:textColor="@color/color_txt"
                 android:textSize="18sp"
                 app:drawableEndCompat="@drawable/ic_next_" />
@@ -227,7 +153,7 @@
                 android:id="@+id/textViewLogOut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chiqish"
+                android:text="Shıǵıw"
                 android:drawableTint="#E37272"
                 android:textColor="#E37272"
                 android:textSize="18sp"
